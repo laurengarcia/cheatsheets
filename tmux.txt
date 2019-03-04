@@ -1,0 +1,49 @@
+$ tmux
+
+# MANUAL/TUTORIAL
+# http://man.openbsd.org/OpenBSD-current/man1/tmux.1
+# https://www.youtube.com/watch?v=BHhA_ZKjyxo
+
+# TMUX CONFIGURATION
+$ vim /home/lauren/.tmux.conf
+
+# BASIC
+$ ctrl-b              # commands to tmux server
+$ ctrl-b :            # to give tmux a named command
+$ ctrb-b ?            # list all key bindings
+
+# SESSIONS --START
+$ tmux new -s <name>  # create a new named session
+$ tmux ls             # shortcut for list-sessions
+$ tmux list-sessions
+$ tmux attach -t <name>  # attach to running tmux session
+
+# SESSIONS --END
+$ tmux kill-session -t <name>
+$ ctrl-b d            # detach from session but leave it running
+$ ctrb-b $            # DONT DO THIS, it fucks up DDG tmux wrapper
+                      # re-name current session
+
+# WINDOWS
+$ ctrl-b c            # create a new window
+$ ctrl-b <win number> # switch to window number
+$ ctrl-b w            # list windows
+$ ctrb-b ,            # rename window
+$ ctrl-b n            # move to next window
+$ ctrl-b p            # move to previous window
+$ exit                # close window. doing this in last window closes tmux
+
+# PANES
+$ ctrl-b %            # split into vertical panes
+$ ctrl-b x            # kill pane
+$ ctrl-b |            # (local shortcut) split to vertical panes
+$ tmux split-window   # split into horizontal panes
+$ ctrl b -            # (local shortcut) split to horizontal panes
+$ ctrl-b :split-window
+$ ctrl-b q            # show pane numbers (used to switch between panes)
+                      # press number to select pane
+$ ctrl-b o            # switch to the next pane
+$ ctrb-b : break-pane # break out pane into new window
+$ ctrl-b x            # close current pane
+
+

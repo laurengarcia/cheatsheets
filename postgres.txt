@@ -1,0 +1,43 @@
+Note:
+$ <-- mac command line prompt
+# <-- postgres console prompt
+
+Start Postgres:
+$ postgresStart <-- there's a shortcut in my .bash_profile
+[.bash_profile] alias postgresStart="launchctl load -w  /usr/local/Cellar/postgresql/9.3.2/homebrew.mxcl.postgresql.plist"
+
+Stop Postgres
+$ postgresStop
+[.bash_profile] alias postgresStop="launchctl unload -w  /usr/local/Cellar/postgresql/9.3.2/homebrew.mxcl.postgresql.plist"
+
+Postgres Status
+$ postgres Status
+[.bash_profile] alias postgresStatus="pg_ctl status"
+
+Open Postgres Console:
+$ psql ldv_development  <- or whatever db name is
+
+Version:
+# SELECT version();
+
+List all databases:
+# \l
+
+List all tables:
+# \d
+
+Timing query:
+# \timing
+Timing is on.
+# SELECT * from ....
+
+Edit queries in fave editor: # \e
+
+Viewing Postgres history file:
+$ cat ~/.psql_history
+
+Quit console:
+# \q
+
+Sample query:
+# SELECT id, email, sign_in_count from admin_users;

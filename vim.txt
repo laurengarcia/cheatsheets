@@ -1,0 +1,37 @@
+  # NERDTree
+:help NERDTree  # help docs for NERDTree Plugin
+ctrl-N   # toggle NERDTree
+
+# NAVIGATION
+h        # left
+j        # up
+k        # down
+l        # right
+
+ctrl-E   # scroll window down
+ctrl-Y   # scroll window up
+ctrl-F   # scroll down a page
+ctrl-B   # scroll up a page
+H        # cursor to top of window
+M        # cursor to middle of window
+L        # cursor to bottom of window
+G        # cursor to last line of file
+gg       # cursor to top of file
+
+# INSERT
+i        # insert before cursor
+I        # insert at beginning of line
+a        # insert after cursor
+A        # insert at end of line
+
+o        # insert new line below cursor
+O        # insert new line above cursor
+ea       # insert at end of word
+
+# COPY + PASTE
+yy       # copy this line
+5yy      # copy this line and four beneath it
+p        # paste
+
+# FILE EDITING
+esc :e!  # re-read file from disk (Refresh)

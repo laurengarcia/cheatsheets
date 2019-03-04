@@ -1,0 +1,39 @@
+# fresh project locally
+$ git init
+
+# fresh clone of a project on github
+$ git clone https://github.com/<user>/<repo>.git
+
+# upstream settings
+$ git remote -v
+$ git remote add origin https://github.com/<user>/<repo>.git
+$ git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+
+# fetch upstream but do not modify working directory
+$ git fetch
+$ git fetch origin
+
+# checkout remote branch locally, track upstream:
+$ git checkout --track origin/master
+
+# create new branch
+$ git checkout -b foobranch
+$ git checkout -b foobranch --track upstream/foobranch
+
+# merge upstream changes with local work
+$ git merge origin/master
+$ git merge --abort
+
+# git fetch and merge in same command
+$ git pull origin/foobranch
+$ git pull --rebase
+
+# cherry pick a change into current branch
+$ git cherry-pick -x <git sha>
+
+# view log
+$ git log
+
+# wipe out local changes to last commit or an earlier commit in log
+$ git reset --hard
+# git reset --hard <git sha>

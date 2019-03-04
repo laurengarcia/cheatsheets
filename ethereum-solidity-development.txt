@@ -1,0 +1,91 @@
+# How to Test and Deploy Solidity Contracts for Ethereum Locally
+
+From:
+https://hackernoon.com/ethereum-development-walkthrough-part-2-truffle-ganache-geth-and-mist-8d6320e12269
+
+
+---- TOOLS ----
+
+Truffle CLI - Dev env, test framework, and asset pipeline to prod Eth
+  `$ npm install -g truffle`
+
+Ganache CLI or GUI - (aka TestRPC), run a virtual Eth blockchain locally.
+  Also comes in GUI form as well.
+  `$ npm install -g ganache-cli`
+
+---------------
+
+
+1/ INIT:
+`$ mkdir myproject`
+`$ truffle init`
+
+2/ CONTRACT:
+Your solidity contract file goes into the /contracts dir.
+Next, go to /migrations and create a new file
+`$ touch contracts/2_deploy_contracts.js`
+
+3/ CONFIG:
+Set correct network settings inside of root dir truffle_config.js file
+
+4/ FIRE UP GANACHE
+(open new terminal and start it)
+`$ ganache-cli -p 8545`
+
+5/ COMPILE (in /myproject dir)
+Compiles solidity to bytecode for EVM
+`$ truffle compile`
+
+NOTE: you may want to rm -rf the entire ./build directory before compiling, esp when deployment or config changes
+
+6/ MIGRATE & DEPLOY
+In /migrations, copy/paste this code (where Wrestling.sol is your contract in /contracts):
+```
+const Wrestling = artifacts.require("./Wrestling.sol")
+
+module.exports = function(deployer) {
+  deployer.deploy(Wrestling);
+};
+```
+
+Deploy to blockchain set in truffle-config.js by running this via CLI:
+`$ truffle migrate --network development`
+
+Contract address is spit out in terminal next to Solidity file name.
+In Ganache term, contract address is next to where it says "Contract created:"
+
+NOTE: If there is extra/ unused cruft code in your contracts, it may throw a spurious error related to gas. Go crop that code out (and remove it from build). You'll need to rm -rf the /build dir and re-compile/re-migrate.
+
+6/ START TRUFFLE CONSOLE
+`$ truffle console --network development`
+
+7/ asign users that Ganache CLI generated via truffle cli:
+`$ account0 = web3.eth.accounts[0]`
+`$ account1 = web3.eth.accounts[1]`
+
+8/ Execute methods & query properties of contract from console CLI
+`$ Wrestling.deployed().then(inst => { WrestlingInstance = inst })`
+
+The truffle console lets you interact with the contract as if it were deployed to the public Eth blockchain. You can call functions and get any public prop:
+
+Call into contract and get current state of public properties:
+`$ WrestlingInstance.<public property>.call()`
+
+Call functions in the contract as one of the users that Ganache created and
+we wired up to the truffle cli above:
+`WrestlingInstance.withdraw({from: account1})`
+
+9/ NOW PLAY THE GAME
+```
+WrestlingInstance.wrestle({from: account0, value: web3.toWei(2, "ether")})
+WrestlingInstance.wrestle({from: account1, value: web3.toWei(3, "ether")})
+// End of the first round
+WrestlingInstance.wrestle({from: account0, value: web3.toWei(5, "ether")})
+WrestlingInstance.wrestle({from: account1, value: web3.toWei(20, "ether")})
+// End of the wrestling
+```
+`value` is used to send ether from the sender with the txn.
+web3 is the js library used to talk to Ganache/EVM
+.toWei() converts the amt in Eth to the smallest unit of Ether
+
+

@@ -1,0 +1,56 @@
+CSS Animations
+
+Is SVG the right implementation (vs Canvas)?
+
+- "How to Choose between SVG and Canvas" https://msdn.microsoft.com/en-us/library/gg193983(v=vs.85).aspx
+- "Canvas vs. SVG Performance" http://smus.com/canvas-vs-svg-performance/ TL;dr canvas wayyy faster but doesn't scale as nicely as SVG; no liquid layouts
+
+canvas pros:
+- quick and speedy - shapes not held in memory, redrawn with each frame
+- Performance is better with smaller surface, a larger number of objects (>10k), or both. performance degrades the larger the number of pixels involved.
+
+canvas cons:
+- can't attach event handlers to canvas objects
+- moving an object in canvas requires re-drawing entire canvas
+- liquid layout is impossible; have to listen via js to resize events and calculate manually; shapes are not scalable, lose fidelity on zoom!
+
+svg pros:
+- shapes are dom elements; better for interactivity bc u can attach event handlers
+- liquid layouts via css
+- great for static images in a liquid layout
+- performance is better with smaller number of objects (<10k), a larger surface, or both
+
+svg cons:
+- CPU hog - shapes are held in memory; limit is CPU
+- performance degradation
+
+
+Generating SVGs for animation (for designers):
+
+- Avoid opacity in any SVG path that animates at all costs.
+- Minimize complexity of SVG: minimize number of points in animated illustration before exporting from image editor (adobe?)
+- Surface area counts: the larger the surface area of animated elements, the worse the CPU/GPU performance. Be clever!
+- Great tutorial on how to scale SVGs: https://css-tricks.com/scale-svg/
+
+
+Animated SVGs + JS/CSS/HTML/DOM:
+
+- Minimize size of SVG: run image thru an optimizer like https://www.npmjs.com/package/svgo, which will remove cruft that Adobe exports SVGs with.
+- If using css transforms to animate the SVG element paths, apply the css rule `will-change: transform;` to the SVG el to give browser a heads-up. Minimize use of this rule, applying to too many elements can cause problems.
+- "Picasso mode": rendering craziness we observed in Chrome and Safari - observed when more than 1 svg element is dynamically rendered into DOM. Using a placeholder svg embedded as an <img> tag that your animated <svg> element can render on top of is a good way to get rid of rendering gap while having more than 1 animated element sit together on a page. Another workaround *may* be to server-render the <svg> element (just a guess).
+- Using jQuery animated smooth scroll to page coordinates + animated SVG is a CPU performance hog (at least this was the case with our ancient jQuery version in production homepage). To mitigate, its best to coordinate jQuery animated scrolling  with the SVG animation to make sure both are not happening at the same time -- ever. Adding a slight pause (~200-500ms) after smooth scroll and before animating the SVG helps CPU perf enormously.
+- If you're not on the main DDG site and can afford the overhead, consider using a specific scroll library for easier cross-browser implementation.
+
+
+Tools:
+
+- Profile CPU via Activity Monitor on MacOS.
+- CPU throttling on Chrome is okay, but don't rely on it. Your mileage may vary, as much of SVG processing seems to get thrown to GPU (vs CPU).
+- Chrome tools > Rendering tab > FPS Meter. Graphs frame rate and has a GPU meter (vs CPU).
+- Chrome tools  > Animations tab
+
+Comps/examples:
+https://privacy.google.com/
+
+
+

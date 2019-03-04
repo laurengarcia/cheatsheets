@@ -1,0 +1,184 @@
+BASH CLI UTILS
+--
+
+MAN
+when in doubt, don't forget to just
+$ man <command name>
+
+WHICH & VERSION
+$ which node
+$ node --version
+
+CURSOR
+$ ctrl a    # move cursor to beginning of line
+$ ctrl e    # move cursor to end of line
+
+ERASING
+$ ctrl w    # erase previous word
+$ ctrl u    # erase the current line
+
+EXIT
+$ ctrl c    # abort the current command
+
+FILE SYSTEM NAVIGATION
+$ cd -      # takes you back to previous directory
+$ cd ~      # takes you to home directory
+$ pwd       # where am i?
+$ whoami    # what user am i?
+$ clear     # clear terminal screen
+$ echo $YO  # display YO variable specified in environment
+$ exit      # exit from system
+
+LISTING FILES IN DIR
+$ ls -l -a   # -a: show hidden files (starting with a `.`)
+             # -l: show long form listing of files (perms, size, owner)
+$ ls -lh     # human readable size
+$ ls -lSr    # sort by human readable size
+
+TOUCH
+$ touch filename.txt  # update timestamp on existing files,
+                      # create new empty files
+
+COPYING (local & remote)
+$ cp source.txt destination.txt
+$ scp mytarball.tgz myuser@someserver.com:/home/myuser
+
+MV
+$ mv original.js copy.js
+
+MAKE DIRS
+$ mkdir mydirectoryname
+
+REMOVING
+$ rm -r -f -v <file or dir>  # remove (delete)
+                             # -r: remove file hierarchy and dirs recursively
+                             # -f: remove without any prompting
+                             # -v: verbose mode lists files as they are deleted
+
+SYMLINKING
+$ ln index.js ~/some/other/place.js  # symlink first file to second file or dir
+
+PROCESS CONTROL
+$ ps               # all processes in shell
+$ ps-ax            # all processes on machine
+$ ps aux | grep node # all processes on machine whose name contains "node"
+$ top              # all processes running on machine
+$ htop             # process monitor, needs installation usually
+$ kill -9 1234     # force-quit prcess with PID 1234
+$ jobs -l          # determine PID's in terminal
+
+FOREGROUND AND BACKGROUND PROCESSES
+(where program is called `count` in these examples)
+$ count &          # run the job in BACKGROUND, display process id number,
+                   # makes it block input, makes the shell not wait for its completion
+$ ps               # check on job
+$ bg               # send job to background
+$ fg %1234         # bring process 1234 to foreground
+$ jobs -l          # list all processes and their job #s
+
+
+DISCONNECT PROCESS FROM TERMINAL
+(where program is called `count` in the examples)
+$ disown count     # removes the process from the shell's job control, but still leaves it connected to the terminal
+$ nohup count      # shields from SIGHUP (signal for closed shell), closes standard input+output, removes from program from shell's job ctrl
+// TODO:
+$ screen
+$ tmux
+
+PERMISSIONS/CHMOD
+$ ls -l                  # list files and their perms
+$ chmod 777 file         # protections for user/group/others
+                         # Each number is a sum of 1 (for execute access),
+                         # 2 (for write/delete access)
+                         # and 4 (for read access).
+$ chmod ugoa+-=rwx file  # user/group/other/all, + or - permission, read/write/execute
+$ umask 555              # used in shell's .bash_profile, etc
+                         # display or set the accesses to be denied on newly created files
+                         # where numbers are user/group/other
+$ sudo node index.js     # execute command `node index.js` as root user
+
+
+HEAD
+$ head file.txt         # show first 10 lines of file.txt
+
+TAIL
+$ tail -f logfile.txt   # show last 10 lines, display bottom of file as new info comes in
+
+DIFF'ING
+$ diff file1 file2
+
+EDITING
+$ vi <filename>
+or
+$ vim <filename>
+
+LESS
+$ less file1.txt     # read contents of file1.txt, type q to quit
+                     # space bar to go forward a page,
+                     # type b to go back a page
+
+CAT
+$ cat <filename>     # read file on cmd line
+$ cat file1 > file2  # copy contents of file1 into file2
+$ cat file1 | less   # if contents of file1 are long, pipe it to less so it can be scrolled thru
+$ cat file1 | subl   # pipe file1 to sublime text (if subl is set up as cmd line util)
+$ cat > file2  (press enter, followed by ctrl d)  # creates file2 (empty)
+$ cat >> file2       # same as above, only if file2 already exists, append new stuff to contents
+
+SED
+Stream editor - alter files automatically http://www.grymoire.com/unix/sed.html
+$ sed -n -e '/<pre>/,/<\/pre>/p' < data.html # Print only the data between open and close <pre> tags in an HTML doc.
+
+SIMPLE PYTHON SERVER
+$ python -m SimpleHTTPServer 8001  # start a python server from port 8001
+
+CURLING, PINGING, DOWNLOADING
+$ curl http://google.com       # print contents of
+$ ping http://google.com       # get/time packets
+$ wget http://foo.com/bar.pdf  # download .pdf
+
+DNS
+$ dig searchcrypto.news +nostats +nocomments +nocmd
+
+HOST
+$ host 123.123.123.124  # will try to resolve to hostname
+# host google.com       # will try to resolve to ip address
+
+PORTS - WHAT PROCESSES RUNNING ON WHAT PORTS
+$ lsof -i -P | grep 8080    # returns list of processes with PIDs on :8080
+
+MYSQLDUMP
+$ mysqldump -uroot -p databasename > dumpfile.sql
+
+INSTALLING PACKAGES (unix)
+$ apt-get
+
+ENCRYPTING ZIP FILES (OSX)
+$ zip -ejr [name] [path to file to encrypt]
+
+CHECKING APP SIGNATURES (OSX)
+more info: https://origin-discussions-us.apple.com/thread/7889707
+$ codesign -v /Applications/iTunes.app/ -v
+
+FILESYSTEM (unix)
+you may have to install via $ apt-get install ncdu
+find the largest files or folders in current working directory
+$ ncdu
+$ du -ma | sort -nr | head -n 20 # List the 20 largest files or folders under
+                                 the current working directory.
+
+SEARCHING w/in files
+$ find
+$ grep 'hello' file.txt   # find string 'hello' in file.txt
+$ awk
+
+LOCATING files/commands
+$ locate foo  <-- locate files named foo in file system
+$ find foo <-- find files named foo within dir hierarchy
+or
+$ whereis foo <-- locate bin, source and man page files for a command
+
+
+// TODO:
+$ printf "yo yo yo\n"
+$ echo

@@ -1,0 +1,13 @@
+
+-------------------------------------------------
+Cheatsheet CLI shortcuts:
+
+$ SCHEAT   # open all cheatsheets in sublime
+$ LSCHEAT  # ls cheatsheet dir
+$ CDCHEAT  # cd into cheatsheet dir
+
+$ BASH     # bash cli cheatsheet
+$ GIT      # git cheatsheet
+$ ND       # node debug cheatsheet
+-------------------------------------------------
+
