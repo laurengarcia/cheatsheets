@@ -5,9 +5,6 @@ export PATH="/usr/local/lib/node_modules/phantomjs/lib/phantom/bin/phantomjs:$PA
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-# bash prompt
-export PS1="🏄‍♀️☕️✌️  \u  \[\e[36;40m\]\W\[\e[33;1m\]\$(parse_git_branch)  \[\e[32;1m\]>>\[\e[0m\] "
-
 # fancy ls
 alias ls="ls -Gh"
 
@@ -23,6 +20,9 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
+
+# bash prompt
+export PS1="\u  \[\e[36;40m\]\W\[\e[33;1m\]\$(parse_git_branch)  \[\e[32;1m\]>>\[\e[0m\] "
 
 # my shortcuts
 alias GH="cd ~/github"
