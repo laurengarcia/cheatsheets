@@ -1,4 +1,4 @@
-  # NERDTree
+# NERDTree
 :help NERDTree  # help docs for NERDTree Plugin
 ctrl-N   # toggle NERDTree
 
