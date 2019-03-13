@@ -1,0 +1,24 @@
+
+UPDATE NPM
+$ npm install -g npm
+
+MANAGE NODE VERSIONS
+$ n  // https://www.npmjs.com/package/n
+
+PKG MGMT
+$ npm login
+$ npm publish ./  // publish bumped version of package to npm repo
+
+INSTALL GLOBAL DEPENDENCIES
+$ npm i <pkg name> -g   // global install of <pkg name>
+$ NPM  // output global modules location, usually /usr/local/lib/node_modules/
+
+INSTALL PROJECT DEPENDENCIES
+$ npm i  // aka: npm install deps in package.json
+
+INIT
+$ npm init  // generate project package.json file
+
+CHECK DEPENDENCIES
+from project root dir:
+$ ncu  // list which deps can be updated; installed via npm-check-updates -g
