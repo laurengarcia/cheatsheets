@@ -1,20 +1,21 @@
-# How to Test and Deploy Solidity Contracts for Ethereum Locally
+EVM/ Ethereum/ Solidity Smart Contract Development
 
-From:
-https://hackernoon.com/ethereum-development-walkthrough-part-2-truffle-ganache-geth-and-mist-8d6320e12269
+BEST PRACTICES
+https://github.com/ConsenSys/smart-contract-best-practices
+https://github.com/OpenZeppelin/openzeppelin-solidity/
 
-
----- TOOLS ----
-
-Truffle CLI - Dev env, test framework, and asset pipeline to prod Eth
+TOOLS
+- Truffle CLI - Dev env, test framework, and asset pipeline to prod Eth
   `$ npm install -g truffle`
 
-Ganache CLI or GUI - (aka TestRPC), run a virtual Eth blockchain locally.
+- Ganache CLI or GUI - (aka TestRPC), run a virtual Eth blockchain locally.
   Also comes in GUI form as well.
   `$ npm install -g ganache-cli`
 
----------------
 
+TEST & DEPLOY
+From:
+https://hackernoon.com/ethereum-development-walkthrough-part-2-truffle-ganache-geth-and-mist-8d6320e12269
 
 1/ INIT:
 `$ mkdir myproject`
