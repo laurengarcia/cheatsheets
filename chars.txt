@@ -1,0 +1,16 @@
+
+CHARACTER SETS:
+Unicode  // aka ISO 10646, "Universal Character Set" (HTML, XML versions 4.0+)
+BMP  // Basic Multilingual Plane: first 65,536 code point positions in Unicode
+ASCII  // English text (only)
+ISO 8859-1  // Latin 1 (HTTP 1.1, HTML 2.0)
+ISO 8859-6  // Arabic letters and symbols
+
+CHARACTER ENCODING
+utf-8   // 1 byte: ASCII, 2 bytes: rest of alphabets, 3 bytes: rest of BMP
+        // supplementary chars use 4 bytes
+utf-16  // 2 bytes for any character in BMP, 4 byes for supplementary chars
+utf-32  // 4 bytes for all chars
+
+HTTP HEADERS
+Content-Type: text/html; charset=UTF-8
