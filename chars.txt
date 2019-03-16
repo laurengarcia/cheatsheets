@@ -14,3 +14,11 @@ utf-32  // 4 bytes for all chars
 
 HTTP HEADERS
 Content-Type: text/html; charset=UTF-8
+
+UNICODE CODE POINTS
+ex:
+"Hello" in Unicode code points:
+U+0048 U+0065 U+006C U+006C U+006F
+
+"Hello" in Unicode code points encoded as utf-8 (8 bit bytes):
+48 65 6C 6C 6F
