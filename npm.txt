@@ -5,8 +5,10 @@ $ npm install -g npm
 MANAGE NODE VERSIONS
 $ n  // https://www.npmjs.com/package/n
 
-PKG MGMT
+PACKAGE MANAGEMENT WORKFLOW
 $ npm login
+... bump package version in package.json using semver
+$ npm i  // updates package-lock.json
 $ npm publish ./  // publish bumped version of package to npm repo
 
 INSTALL GLOBAL DEPENDENCIES
