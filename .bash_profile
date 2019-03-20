@@ -30,12 +30,11 @@ alias BB="cd ~/bitbucket"
 
 _CHEATDIR="~/github/cheatsheets"
 alias CHEAT="cat $_CHEATDIR/index.txt"
-alias SCHEAT="sublime $_CHEATDIR"
-alias LSCHEAT="ls $_CHEATDIR"
-alias CDCHEAT="cd $_CHEATDIR"
-alias ND="cat $_CHEATDIR/node-debug.txt"
+alias CHEATSB="sublime $_CHEATDIR"
+alias CHEATLS="ls $_CHEATDIR"
+alias CHEATCD="cd $_CHEATDIR"
 alias BASH="cat $_CHEATDIR/bash.txt"
-
+alias ND="cat $_CHEATDIR/node-debug.txt"
 _LOCUS='const locus = require\(\`/usr/local/lib/node_modules/locus\`\)' # <-- global npm locus location
 alias LOCUS="echo $_LOCUS\; eval\(locus\)"
 _NPM="global npm modules location: /usr/local/lib/node_modules"
