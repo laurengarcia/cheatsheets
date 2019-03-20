@@ -3,7 +3,6 @@ https://web.mit.edu/16.070/www/lecture/big_o.pdf
 --
 
 Uses letter "O" bc rate of growth of a function is called its "order".
-
 A list of classes of functions that are commonly encountered when analyzing
 algorithms:
 
@@ -20,6 +19,7 @@ O(c^n)         exponential
 where:
 n = natural number n as argument
 c = some arbitrary constant
+
 
 Big O Notation
 --
@@ -70,4 +70,74 @@ When we are trying to find the complexity of the function/ procedure/ algorithm/
 
 Typically, we are usually interested in the worst case: what is the maximum number ofoperations that might be performed for a given problem size. For example, inserting an element into an array, we have to move the current element and all of the elements that come after it one place to the right in the array. In the worst case, inserting at the beginning of the array, all of the elements in the array must be moved. Therefore, in the worst case, the time for insertion is proportional to the number of elements in the array,
 and we say that the worst-case time for the insertion operation is linear in the number of elements in the array. For a linear-time algorithm, if the problem size doubles, the number of operations also doubles.
+
+
+Determining Complexities
+--
+
+In general, how can you determine the running time of a piece of code? The answer is that it depends on what kinds of statements are used.
+
+
+1/ Sequence of statements
+statement 1;
+statement 2;
+...
+statement k;
+
+The total time is found by adding the times for all statements:
+
+total time = time(statement 1) + time(statement 2) + ... + time(statement k)
+
+If each statement is "simple" (only involves basic operations) then the time for eachstatement is constant and the total time is also constant: O(1).
+
+
+2/ If-Then-Else
+if (cond) then
+block 1 (sequence of statements)
+else
+block 2 (sequence of statements)
+end if;
+
+Here, either block 1 will execute, or block 2 will execute. Therefore, the worst-case time is the slower of the two possibilities:
+
+max(time(block 1), time(block 2))
+
+If block 1 takes O(1) and block 2 takes O(N), the if-then-else statement would be O(N).
+
+
+3/ Loops
+for I in 1 .. N loop
+  sequence of statements
+end loop;
+
+The loop executes N times, so the sequence of statements also executes N times. If we assume the statements are O(1), the total time for the for loop is N * O(1), which is O(N) overall.
+
+
+4/ Nested loops
+for I in 1 .. N loop
+  for J in 1 .. M loop
+    sequence of statements
+  end loop;
+end loop;
+
+The outer loop executes N times. Every time the outer loop executes, the inner loop executes M times. As a result, the statements in the inner loop execute a total of N * M times. Thus, the complexity is O(N * M).
+
+In a common special case where the stopping condition of the inner loop is J < M instead of J > M (i.e., the inner loop also executes N times), the total complexity for the two loops is O(N^2).
+
+
+5/ Statements with function/ procedure calls
+
+When a statement involves a function/ procedure call, the complexity of the statement includes the complexity of the function/ procedure. Assume that you know that function/ procedure f takes constant time, and that function/procedure g takes time proportional to (linear in) the value of its parameter k. Then the statements below have the time complexities indicated.
+
+f(k) has O(1)
+g(k) has O(k)
+
+When a loop is involved, the same rule applies. For example:
+
+for J in 1 .. N loop
+  g(J);
+end loop;
+
+has complexity (N^2). The loop executes N times and each function/procedure call g(N) is complexity O(N).
+
 
