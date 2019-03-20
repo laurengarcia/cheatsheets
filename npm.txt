@@ -5,22 +5,33 @@ $ npm install -g npm
 MANAGE NODE VERSIONS
 $ n  // https://www.npmjs.com/package/n
 
+INIT
+$ npm init  // generate package.json file for a project
+
 PACKAGE MANAGEMENT WORKFLOW
 $ npm login
 ... bump package version in package.json using semver
 $ npm i  // updates package-lock.json
 $ npm publish ./  // publish bumped version of package to npm repo
 
+CHECK GLOBAL DEPENDENCIES LOCATION
+$ NPM  // usually /usr/local/lib/node_modules/
+
 INSTALL GLOBAL DEPENDENCIES
-$ npm i <pkg name> -g   // global install of <pkg name>
-$ NPM  // output global modules location, usually /usr/local/lib/node_modules/
+$ npm i <package_name> -g   // global install of <pkg name>
 
 INSTALL PROJECT DEPENDENCIES
-$ npm i  // aka: npm install deps in package.json
+$ npm i --save <package_name>  // aka: npm install dep, add to package.json
 
-INIT
-$ npm init  // generate project package.json file
-
-CHECK DEPENDENCIES
+AUDIT PROJECT DEPENDENCIES
 from project root dir:
 $ ncu  // list which deps can be updated; installed via npm-check-updates -g
+
+UNINSTALL GLOBAL DEPENDENCIES
+$ npm uninstall -g <package_name>
+$ npm uninstall -g <@scope/package_name>
+
+UNINSTALL PROJECT DEPENDENCIES
+$ npm uninstall <package_name>
+$ npm uninstall --save <package_name>  // remove from package.json
+$ npm uninstall <@scope/package_name>  // for scoped packages
