@@ -1,0 +1,20 @@
+UDP: User Datagram Protocol
+Lightweight but not as reliable as TCP
+
+- Size
+Smaller packet sizes vs TCP. Header is 8 bytes vs. 20 bytes for TCP.
+
+- Connectionless
+Dont have to create and maintain connection.
+More control over when data is sent.
+
+- Error protection
+Primitive form of error protection, 16 bit checksum to detect.
+Does not try to recover from corruption.
+Does have a flag to warn application of corruption.
+
+- Packets
+No compensation for lost packets. Tough luck for lost packets.
+No guarantee of packet order.
+No congestion control.
+Tries to ram packets thru, hard on congested networks.

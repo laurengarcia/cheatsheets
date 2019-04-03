@@ -1,0 +1,28 @@
+Certificate-Based Authentication
+--
+
+When presented with a certificate, an authentication server will do the following (at a minimum):
+
+1 - Has the Digital Certificate been issued/signed by a Trusted CA?
+2 - Is the Certificate Expired – checks both the start and end dates
+3 - Has the Certificate been revoked? (Could be OCSP or CRL check)
+4 - Has the client provided proof of possession?
+
+
+1 - Has the Digital Certificate been issued/signed by a Trusted CA (Certificate Authority?
+  - must have been signed correctly (following the correct format, etc)
+  - the signing CA’s public key must be in a Trusted Certificates store, and that certificate must be trusted for purposes of authentication
+
+2 - Certificate expiry
+  - certificate will have 2 dates listed in it: a date issued, and date it is valid to (when does it expire)
+  - Is it valid for the date and time that the authentication request comes in
+  - This is one reason why Network Time Protocol (NTP) is so important
+
+3 - Has cert been revoked?
+  - Every certificate authority should also have a service to publish a list of certificates that have been revoked
+  - Certificate Revocation List (CRL).  This is basically a signed list that the CA publishes on a website that can be read by authentication servers.
+  - Online Certificate Status Protocol (OCSP) is preferred method for revocation checks in most environments today, is almost real-time
+
+4 - Has the client provided proof of possession?
+  - Auth server makes sure the client truly owns the certificate
+  - Successfully encrypting and decrypting of some random data ensures that the client has both the public and private keys

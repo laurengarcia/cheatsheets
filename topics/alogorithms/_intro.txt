@@ -1,0 +1,20 @@
+Algorthims
+
+Five important characteristics of algorithms:
+
+- Algorithms are well-ordered.
+- Algorithms have unambiguous operations.
+- Algorithms have effectively computable operations.
+- Algorithms produce a result.
+- Algorithms halt in a finite amount of time.
+
+
+Algorithm efficiency is measured by:
+
+1 Space efficiency: Amt of memory used
+2 Time efficiency: # of operations
+
+
+Analysis:
+Measuring algorithms for time efficiency (or # of operations)
+we calculate # of operations in the WORST-case scenario.

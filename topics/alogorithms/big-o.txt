@@ -1,4 +1,4 @@
-BIG O
+BIG O (aka Order Notation)
 https://web.mit.edu/16.070/www/lecture/big_o.pdf
 --
 

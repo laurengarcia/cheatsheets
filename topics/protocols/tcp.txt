@@ -1,0 +1,60 @@
+TCP: Transmission Control Protocol
+
+TCP is responsible for repairing erroneous connections and faults in packet delivery. TCP is not exactly a new protocol - the first specification came out in 1974.
+
+- Connection-oriented
+TCP is responsible for repairing erroneous connections and faults in packet delivery. TCP is much more involved than UDP. it is a connection-oriented protocol, meaning a unicast communication channel is established between exactly two sides as a first step.
+
+- Streaming
+TCP is a streaming protocol. unlike UDP, TCP does not guarantee applications steady “chunks” of data as they are sent and received. TCP implementation has to buffer the data and when packets get lost, reordered or corrupted. Sequencing of the data stream is the main feature of TCP.
+
+- Packetized
+As TCP operates on data as a stream, the “chunks” from the stream have to be converted into packets that IP can carry. Each packet has a number. The TCP header contains the sequence number of the current index in the stream.  This also has the convenient property that the stream can be broken into many variable-sized segments and TCP then knows how to repacketize them.
+
+- Integrity
+Similarly to IP, TCP also checks the message for integrity. This is achieved through the same checksum algorithm as in IP, but with added details. Mainly, the checksum is end-to-end, meaning that both the header and the data are included to the checksumming. In addition, a pseudo-header built from the IP header is included.
+
+- Duplex
+Traffic can flow simultaneously in both direction. Both sides have to keep the sequencing of data to both directions in memory. In more depth, TCP preserves its traffic footprint by including an acknowledgement for the opposite traffic in the segments it sends. The problem of keeping it synchronized, however, is not a simple one.
+
+- Estimation
+Round-trip time estimation: TCP continuously monitors the exchange of data packets, develops an estimate of how long it should take to receive an acknowledgement, and automatically retransmits if this time is exceeded.
+
+- Congestion Control
+Delays transmission when network is congested.
+
+
+TCP "3-Way" Handshake:
+1. The client sends a SYN packet to the server to initiate a handshake.
+2. Upon receipt of this, the server sends a SYN-ACK packet to the client.
+3. Finally, the client sends an ACK packet to the server to indicate that it has received the server’s SYN-ACK packet. (By this point, the connection to the server has already been established through port 56911 of the client.)
+
+
+TCP Header:
+20 octets in size. seemingly simple, but contains a lot of information about the communication state.
+
+TCP Header Fields:
+- Source Port: 16 bits in size, so range from 0 to 65535
+- Destination Port: same
+- Sequence Number or Initial Sequence Number: represents the TCP segment’s window index. When handshaking, this contains the Initial Sequence Number (ISN).
+- Acknowledgement Number: The Acknowledgment Number contains the window’s index of the next byte the sender expects to receive. After the handshake, the ACK field must always be populated.
+- Header Length (aka "Data Offset") field presents the length of the header in 32-bit words.
+- Reserved field (6 bits) must be zero. This is for future use.
+- Flags field (6 bits) contains the various flags:
+  URG—Indicates that some urgent data has been placed.
+  ACK—Indicates that acknowledgement number is valid.
+  PSH—Indicates that data should be passed to the application as soon as possible.
+  RST—Resets the connection.
+  SYN—Synchronizes sequence numbers to initiate a connection.
+  FIN—Means that the sender of the flag has finished sending data.
+- Window field (16 bits) specifies the size of the sender's receive window (that is, buffer space available for incoming data). In other words, this is the number of bytes the receiver is willing to accept. Since it is a 16-bit field, the maximum window size is 65,535 bytes.
+- Checksum field (16 bits) indicates whether the header was damaged in transit.
+Urgent pointer field (16 bits) points to the first urgent data byte in the packet.
+- The Urgent Pointer is used when the U-flag is set. The pointer indicates the position of the urgent data in the stream.
+- Options field (variable length) specifies various TCP options. An example of these options is the Maximum Segment Size (MSS), where the sender informs the other side of the maximum size of the segments.
+- Data field (variable length) contains upper-layer information. The data, however, is not required. For example, the handshake is accomplished with only TCP headers.
+
+
+
+
+

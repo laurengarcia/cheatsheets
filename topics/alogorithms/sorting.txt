@@ -1,0 +1,34 @@
+Simple Sort Algorithm:
+
+1 Get a list of unsorted numbers
+2 Repeat steps 3 through 6 until the unsorted list is empty
+  3 Compare the unsorted numbers
+  4 Select the smallest unsorted number
+  5 Move this number to the sorted list
+  6 Store a maximum value in the place of the smallest number
+7 Stop
+
+
+Insertion Sort Algorithm:
+
+1 Get a list of unsorted numbers
+2 Set a marker for the sorted section after the first number in the list
+3 Repeat steps 4 through 6 until the unsorted section is empty
+  4 Select the first unsorted number
+  5 Swap this number to left until it arrives at the correct sorted position
+  6 Advance the marker to the right one position
+7 Stop
+
+
+Selection Card Sort:
+
+1 Get a list of unsorted numbers
+2 Set a marker for the unsorted section at the front of the list
+3 Repeat steps 4 - 6 until one number remains in the unsorted section
+  4 Compare all unsorted numbers in order to select the smallest one
+  5 Swap this number with the first number in the unsorted section
+  6 Advance the marker to the right one position
+7 Stop
+
+
+To analyze time efficiency we would create formulas to express # of comparisons and number of copies.
