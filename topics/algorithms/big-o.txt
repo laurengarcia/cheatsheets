@@ -4,17 +4,17 @@ https://web.mit.edu/16.070/www/lecture/big_o.pdf
 
 Uses letter "O" bc rate of growth of a function is called its "order".
 A list of classes of functions that are commonly encountered when analyzing
-algorithms:
+algorithms in terms of time complexity (# of operations):
 
 notation       name
 --             --
-O(1)           constant
-O(log(n))      logarithmic
-O((log(n))^c)  polylogarithmic
-O(n)           linear
-O(n^2)         quadratic
-O(n^c)         polynomial
-O(c^n)         exponential
+O(1)           constant time
+O(log(n))      logarithmic time
+O((log(n))^c)  polylogarithmic time
+O(n)           linear time
+O(n^2)         quadratic time
+O(n^c)         polynomial time
+O(c^n)         exponential time
 
 where:
 n = natural number n as argument
