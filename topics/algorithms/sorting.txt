@@ -31,4 +31,4 @@ Selection Card Sort:
 7 Stop
 
 
-To analyze time efficiency we would create formulas to express # of comparisons and number of copies.
+To analyze time efficiency we would create formulas to express # of comparisons, # of copies, and # of swaps.
