@@ -1,6 +1,6 @@
 TCP: Transmission Control Protocol
 
-TCP is responsible for repairing erroneous connections and faults in packet delivery. TCP is not exactly a new protocol - the first specification came out in 1974.
+TCP is responsible for repairing erroneous connections and faults in packet delivery. TCP not new - first spec came out in 1974.
 
 - Connection-oriented
 TCP is responsible for repairing erroneous connections and faults in packet delivery. TCP is much more involved than UDP. it is a connection-oriented protocol, meaning a unicast communication channel is established between exactly two sides as a first step.
@@ -17,7 +17,7 @@ Similarly to IP, TCP also checks the message for integrity. This is achieved thr
 - Duplex
 Traffic can flow simultaneously in both direction. Both sides have to keep the sequencing of data to both directions in memory. In more depth, TCP preserves its traffic footprint by including an acknowledgement for the opposite traffic in the segments it sends. The problem of keeping it synchronized, however, is not a simple one.
 
-- Estimation
+- Estimation & Retransmission
 Round-trip time estimation: TCP continuously monitors the exchange of data packets, develops an estimate of how long it should take to receive an acknowledgement, and automatically retransmits if this time is exceeded.
 
 - Congestion Control
@@ -28,7 +28,7 @@ TCP "3-Way" Handshake:
 1. The client sends a SYN packet to the server to initiate a handshake.
 2. Upon receipt of this, the server sends a SYN-ACK packet to the client.
 3. Finally, the client sends an ACK packet to the server to indicate that it has received the server’s SYN-ACK packet. (By this point, the connection to the server has already been established through port 56911 of the client.)
-
+(SYN = synchronize, ACK = acknowledge)
 
 TCP Header:
 20 octets in size. seemingly simple, but contains a lot of information about the communication state.
@@ -53,8 +53,4 @@ Urgent pointer field (16 bits) points to the first urgent data byte in the packe
 - The Urgent Pointer is used when the U-flag is set. The pointer indicates the position of the urgent data in the stream.
 - Options field (variable length) specifies various TCP options. An example of these options is the Maximum Segment Size (MSS), where the sender informs the other side of the maximum size of the segments.
 - Data field (variable length) contains upper-layer information. The data, however, is not required. For example, the handshake is accomplished with only TCP headers.
-
-
-
-
 

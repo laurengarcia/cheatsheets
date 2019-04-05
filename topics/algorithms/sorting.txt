@@ -1,3 +1,6 @@
+To analyze time efficiency we would create formulas to express # of comparisons, # of copies, and # of swaps.
+
+
 Simple Sort Algorithm:
 
 1 Get a list of unsorted numbers
@@ -29,6 +32,3 @@ Selection Card Sort:
   5 Swap this number with the first number in the unsorted section
   6 Advance the marker to the right one position
 7 Stop
-
-
-To analyze time efficiency we would create formulas to express # of comparisons, # of copies, and # of swaps.
