@@ -9,11 +9,11 @@ WHICH & VERSION
 $ which node
 $ node --version
 
-CURSOR
+CLI CURSOR
 $ ctrl a    # move cursor to beginning of line
 $ ctrl e    # move cursor to end of line
 
-ERASING
+CLI ERASING
 $ ctrl w    # erase previous word
 $ ctrl u    # erase the current line
 
@@ -32,8 +32,24 @@ $ exit      # exit from system
 LISTING FILES IN DIR
 $ ls -l -a   # -a: show hidden files (starting with a `.`)
              # -l: show long form listing of files (perms, size, owner)
+             # -r: reverse
 $ ls -lh     # human readable size
-$ ls -lSr    # sort by human readable size
+$ ls -lSr    # sort by human readable size, reverse order
+
+FILE SIZES (unix)
+install via $ apt-get install ncdu
+find the largest files or folders in current working directory
+$ ncdu
+$ du -ma | sort -nr | head -n 20 # List the 20 largest files or folders under
+                                 # the current working directory.
+
+GREP: SEARCHING w/in files
+$ grep 'hello' file.txt   # find string 'hello' in file.txt
+$ grep 'hello' *          # find string 'hello' in all files in dir
+
+LOCATING files/commands
+$ find foo      # find files named foo within dir hierarchy
+$ whereis grep  # locate bin, source and man page files for a command
 
 TOUCH
 $ touch filename.txt  # update timestamp on existing files,
@@ -59,31 +75,30 @@ SYMLINKING
 $ ln index.js ~/some/other/place.js  # symlink first file to second file or dir
 
 PROCESS CONTROL
-$ ps               # all processes in shell
-$ ps-ax            # all processes on machine
+$ ps                 # all processes in shell
+$ ps-ax              # all processes on machine
 $ ps aux | grep node # all processes on machine whose name contains "node"
-$ top              # all processes running on machine
-$ htop             # process monitor, needs installation usually
-$ kill -9 1234     # force-quit prcess with PID 1234
-$ jobs -l          # determine PID's in terminal
+$ top                # all processes running on machine
+$ htop               # process monitor, needs installation usually
+$ kill -9 1234       # force-quit prcess with PID 1234
+$ jobs -l            # determine PID's in terminal
 
 FOREGROUND AND BACKGROUND PROCESSES
 (where program is called `count` in these examples)
-$ count &          # run the job in BACKGROUND, display process id number,
-                   # makes it block input, makes the shell not wait for its completion
-$ ps               # check on job
-$ bg               # send job to background
-$ fg %1234         # bring process 1234 to foreground
-$ jobs -l          # list all processes and their job #s
-
+$ count &            # run the job in BACKGROUND, display process id number,
+                     # makes it block input, makes the shell not wait for its
+                     # completion
+$ count1 && count2   # command2 is executed if, and only if,
+                     # command1 returns an exit status of zero
+$ ps                 # check on job
+$ bg                 # send job to background
+$ fg %1234           # bring process 1234 to foreground
+$ jobs -l            # list all processes and their job #s
 
 DISCONNECT PROCESS FROM TERMINAL
 (where program is called `count` in the examples)
 $ disown count     # removes the process from the shell's job control, but still leaves it connected to the terminal
 $ nohup count      # shields from SIGHUP (signal for closed shell), closes standard input+output, removes from program from shell's job ctrl
-// TODO:
-$ screen
-$ tmux
 
 PERMISSIONS/CHMOD
 $ ls -l                  # list files and their perms
@@ -91,26 +106,29 @@ $ chmod 777 file         # protections for user/group/others
                          # Each number is a sum of 1 (for execute access),
                          # 2 (for write/delete access)
                          # and 4 (for read access).
-$ chmod ugoa+-=rwx file  # user/group/other/all, + or - permission, read/write/execute
+$ chmod ugoa+-=rwx file  # user/group/other/all, + or - permission,
+                         # read/write/execute
 $ umask 555              # used in shell's .bash_profile, etc
                          # display or set the accesses to be denied on newly created files
                          # where numbers are user/group/other
 $ sudo node index.js     # execute command `node index.js` as root user
 
-
 HEAD
 $ head file.txt         # show first 10 lines of file.txt
+$ head -n 3 file.txt    # show first 3 lines of file.txt
 
 TAIL
-$ tail -f logfile.txt   # show last 10 lines, display bottom of file as new info comes in
+$ tail -f log.txt       # show last 10 lines and
+                        # display bottom of file as new info comes in
+$ tail -n 5 log.txt     # show last 5 lines of file
 
 DIFF'ING
 $ diff file1 file2
+$ diff -bw file1 file2  # diff but ignore whitespace
 
-EDITING
-$ vi <filename>
-or
+VIM EDITING
 $ vim <filename>
+$ vi <filename>
 
 LESS
 $ less file1.txt     # read contents of file1.txt, type q to quit
@@ -160,25 +178,12 @@ CHECKING APP SIGNATURES (OSX)
 more info: https://origin-discussions-us.apple.com/thread/7889707
 $ codesign -v /Applications/iTunes.app/ -v
 
-FILESYSTEM (unix)
-you may have to install via $ apt-get install ncdu
-find the largest files or folders in current working directory
-$ ncdu
-$ du -ma | sort -nr | head -n 20 # List the 20 largest files or folders under
-                                 the current working directory.
 
-SEARCHING w/in files
-$ find
-$ grep 'hello' file.txt   # find string 'hello' in file.txt
+TODO:
+$ locate
 $ awk
-
-LOCATING files/commands
-$ locate foo  <-- locate files named foo in file system
-$ find foo <-- find files named foo within dir hierarchy
-or
-$ whereis foo <-- locate bin, source and man page files for a command
-
-
-// TODO:
+$ sed
 $ printf "yo yo yo\n"
 $ echo
+$ screen
+$ tmux
