@@ -33,6 +33,7 @@ $ git cherry-pick -x <git sha>
 
 # view log
 $ git log
+$ git log --oneline
 
 # wipe out local changes to last commit or an earlier commit in log
 $ git reset --hard
