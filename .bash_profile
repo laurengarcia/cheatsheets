@@ -4,6 +4,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/lib/node_modules/phantomjs/lib/phantom/bin/phantomjs:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="~/Library/Python/2.7/bin:$PATH"
 
 # fancy ls
 alias ls="ls -Gh"
