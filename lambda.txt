@@ -1,0 +1,57 @@
+
+AWS LAMBDA Best Practices:
+https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html
+
+AWS PROFILE SETUP:
+~/.aws/config  # list of aws profiles
+~/.aws/credentials  # credentials for each profile
+$ export AWS_PROFILE=<myProfileName> # set aws profile to use from config
+
+SET AWS PROFILE TO USE from CLI in a new terminal:
+$ export AWS_PROFILE=<profile name in ~/.aws/credentials>
+
+INVOKE LOCALLY:
+https://serverless.com/framework/docs/providers/aws/cli-reference/invoke-local/
+
+$ serverless invoke local --function ordersGet # fn defined in serverless.yml
+$ serverless invoke local --function ordersGet --data '{"foo": "bar"}'
+$ serverless invoke local --function ordersUpdate --path mocks/path/to.json
+
+DEBUG:
+SLS_DEBUG=* serverless invoke local --function FUNCTION_NAME
+
+DEPLOY:
+$ serverless deploy
+$ serverless deploy --aws-profile <myProfileName> # if multiple AWS profiles
+
+DEPLOY ONE FUNCTION:
+$ serverless deploy function -f <fn name> # fn name defined in serverless.yml
+$ serverless deploy function -f ordersGet --aws-profile <myProfileName>
+
+INVOKE ONE FUNCTION from CLI (after deploy):
+https://docs.aws.amazon.com/cli/latest/reference/lambda/invoke.html
+
+$ serverless invoke --function <fn name>  # fn name defined in serverless.yml
+$ serverless invoke --function ordersGet --aws-profile <myProfileName>
+
+INVOKE ONE FUNCTION from AWS UI:
+Navigate to Lambda > Functions > FUNCTION_NAME
+Hit the "Test" button
+
+INVOKE LAMBDA from LAMBDA:
+https://lorenstewart.me/2017/10/02/serverless-framework-lambdas-invoking-lambdas/
+
+EXECUTION PERMISSIONS "ROLE"
+defined in serverless.yml: provider.role
+
+JEST
+yarn test
+
+JEST: RUN ONE TEST from CLI
+$ node node_modules/.bin/jest -i tests/path/to.test.js -t "get products"
+...where "get products" is the description in the get.test.js block:
+  describe('get products', () => {
+
+TEST A DEPLOYED FUNCTION VIA GATEWAY (fr/ serverless tutorial):
+$ npx aws-api-gateway-cli-test --username admin@example.com --password <myPassword> --user-pool-id YOUR_COGNITO_USER_POOL_ID --app-client-id YOUR_COGNITO_APP_CLIENT_ID --cognito-region YOUR_COGNITO_REGION --identity-pool-id YOUR_IDENTITY_POOL_ID --invoke-url YOUR_API_GATEWAY_URL --api-gateway-region YOUR_API_GATEWAY_REGION --path-template /notes --method POST --body "{\"content\":\"hello world\",\"attachment\":\"hello.jpg\"}"
+
