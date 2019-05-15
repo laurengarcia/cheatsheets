@@ -2,6 +2,10 @@
 AWS LAMBDA Best Practices:
 https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html
 
+SERVERLESS FRAMEWORK & TUTORIALS:
+https://serverless.com/
+http://serverless-stack.com
+
 AWS PROFILE SETUP:
 ~/.aws/config  # list of aws profiles
 ~/.aws/credentials  # credentials for each profile
