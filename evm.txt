@@ -1,19 +1,31 @@
+/**
+
 EVM/ Ethereum/ Solidity Smart Contract Development
 
-BEST PRACTICES
+ */
+
+- BEST PRACTICES
 https://github.com/ConsenSys/smart-contract-best-practices
 https://github.com/OpenZeppelin/openzeppelin-solidity/
 
-TOOLS
-- Truffle CLI - Dev env, test framework, and asset pipeline to prod Eth
-  `$ npm install -g truffle`
+- TOOLS
+  - Truffle CLI - Dev env, test framework, and asset pipeline to prod Eth
+      `$ npm install -g truffle`
 
-- Ganache CLI or GUI - (aka TestRPC), run a virtual Eth blockchain locally.
-  Also comes in GUI form as well.
-  `$ npm install -g ganache-cli`
+  - Ganache CLI or GUI - (aka TestRPC), run a virtual Eth blockchain locally.
+      Also comes in GUI form as well.
+      `$ npm install -g ganache-cli`
 
 
-TEST & DEPLOY
+- SMART CONTRACT DEPENDENCY FLATTENER
+  When you find code in the wild you can use truffle-flattener to compile
+  the contract with all of its dependencies into one .sol file
+
+  $ npm install -D truffle-flattener --save
+  truffle-flattener ./contracts/examples/Whitelist.sol > flattend.sol
+
+
+- TEST & DEPLOY
 From:
 https://hackernoon.com/ethereum-development-walkthrough-part-2-truffle-ganache-geth-and-mist-8d6320e12269
 

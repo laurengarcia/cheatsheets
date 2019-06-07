@@ -27,6 +27,7 @@ SLS_DEBUG=* serverless invoke local --function FUNCTION_NAME
 DEPLOY:
 $ serverless deploy
 $ serverless deploy --aws-profile <myProfileName> # if multiple AWS profiles
+$ serverless deploy --stage dev # deploy w stage option
 
 DEPLOY ONE FUNCTION:
 $ serverless deploy function -f <fn name> # fn name defined in serverless.yml
