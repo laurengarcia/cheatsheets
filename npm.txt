@@ -1,6 +1,6 @@
 
 UPDATE NPM
-$ npm install -g npm
+$ sudo npm install -g npm
 
 MANAGE NODE VERSIONS
 $ n  // https://www.npmjs.com/package/n
@@ -15,12 +15,15 @@ $ npm i  // updates package-lock.json
 $ npm publish ./  // publish bumped version of package to npm repo
 
 CHECK GLOBAL DEPENDENCIES LOCATION
-$ NPM  // usually /usr/local/lib/node_modules/
+$ NPM  // .bashrc shortcut; usually /usr/local/lib/node_modules/
 
 INSTALL GLOBAL DEPENDENCIES
 $ npm i <package_name> -g   // global install of <pkg name>
 
-INSTALL PROJECT DEPENDENCIES
+UPDATE GLOBAL DEPENDENCIES
+$ npm update <package_name> -g
+
+INSTALL PROJECT DEPENDENCIES, write to package.json
 $ npm i --save <package_name>  // aka: npm install dep, add to package.json
 
 AUDIT PROJECT DEPENDENCIES
