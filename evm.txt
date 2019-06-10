@@ -45,6 +45,8 @@ Set correct network settings inside of root dir truffle_config.js file
 (open new terminal and start it)
 `$ ganache-cli -p 8545`
 
+  ...or run from standalone application
+
 5/ COMPILE (in /myproject dir)
 Compiles solidity to bytecode for EVM
 `$ truffle compile`
