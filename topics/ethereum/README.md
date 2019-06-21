@@ -7,5 +7,7 @@
 
 ### Tools
 - [Truffle + Ganache](truffle-ganache.md)
+- [Truffle Flattener](truffle-ganache.md): compiling smart contract & deps
+- [Truffle Box](https://truffle-box.github.io/)
 - Solhint: Solidity linter
 - ZepKit: hot reloader for smart contracts by Open Zeppelin
