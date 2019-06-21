@@ -9,9 +9,7 @@ $ npm install -g truffle
 ```
 
 #### Ganache CLI or GUI
-- Ganache CLI or GUI (was called TestRPC)
-- Run a virtual Eth blockchain locally.
-- Also comes in GUI form as well.
+Ganache CLI or GUI (was called TestRPC). Runs a virtual Eth blockchain locally. Also comes in GUI form as well.
 ```
 $ npm install -g ganache-cli
 ```
