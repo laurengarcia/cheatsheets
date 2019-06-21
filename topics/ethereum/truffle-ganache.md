@@ -2,29 +2,28 @@
 
 ### Install
 
-#### Truffle CLI
+##### Truffle CLI
 Dev env, test framework, and asset pipeline to prod Ethereum:
 ```
 $ npm install -g truffle
 ```
 
-#### Ganache CLI or GUI
-Ganache CLI or GUI (was called TestRPC)
-Run a virtual Eth blockchain locally.
-Also comes in GUI form as well.
+##### Ganache CLI or GUI
+- Ganache CLI or GUI (was called TestRPC)
+- Run a virtual Eth blockchain locally.
+- Also comes in GUI form as well.
 ```
 $ npm install -g ganache-cli
 ```
 
-#### Smart Contract Dependency Flattener
-When you find code in the wild you can use truffle-flattener to compile the contract with all of its dependencies into one .sol file
-Install:
+##### Smart Contract Dependency Flattener
+When you find code in the wild you can use truffle-flattener to compile the contract with all of its dependencies into one .sol file. Install:
 ```
 $ npm install -D truffle-flattener --save
 ```
-Use:
+Usage:
 ```
-truffle-flattener ./contracts/examples/Whitelist.sol > flattend.sol
+$ truffle-flattener ./contracts/examples/Whitelist.sol > flattend.sol
 ```
 
 ## Test & Deploy
@@ -37,8 +36,8 @@ $ truffle init
 ```
 
 2. Contract & Migrations:
-Your solidity contract file goes into the /contracts dir.
-Next, go to /migrations and create a new file:
+- Your solidity contract file goes into the /contracts dir.
+- Next, go to /migrations and create a new file:
 ```
 $ touch migrations/2_deploy_contracts.js
 ```
@@ -53,8 +52,8 @@ $ ganache-cli -p 8545
 ```
 
 5. Compile (in /myproject dir)
-Compiles solidity to bytecode for EVM.
-NOTE: you may need to rm -rf the entire ./build directory before compiling, esp when deployment or config changes. Can make this a step in your build pipeline.
+- Compiles solidity to bytecode for EVM.
+- NOTE: you may need to rm -rf the entire ./build directory before compiling, esp when deployment or config changes. Can make this a step in your build pipeline.
 ```
 $ truffle compile
 ```
@@ -69,14 +68,9 @@ module.exports = function(deployer) {
 };
 ```
 
-7. Deploy
-...to blockchain set in truffle-config.js by running this via cli:
+7. Deploy to blockchain set in truffle-config.js by running this via cli. Contract address is spit out in terminal next to Solidity file name. In Ganache terminal, contract address is next to where it says "Contract created:"
 
-Contract address is spit out in terminal next to Solidity file name.
-In Ganache terminal, contract address is next to where it says "Contract created:"
-
-NOTE: If there is extra/ unused cruft code in your contracts, it may throw a spurious error related to gas. Go crop that code out (and remove it from build). You'll need to rm -rf the /build dir and re-compile/re-migrate.
-
+- NOTE: If there is extra/ unused cruft code in your contracts, it may throw a spurious error related to gas. Go crop that code out (and remove it from build). You'll need to rm -rf the /build dir and re-compile/re-migrate.
 ```
 $ truffle migrate --network development
 ```
@@ -92,25 +86,20 @@ $ truffle console --network development
 `$ account1 = web3.eth.accounts[1]
 ```
 
-10. Create contract instance
-From console, create an instance of the contract:
+10. Create contract instance from console, create an instance of the contract:
 ```
 $ Wrestling.deployed().then(inst => { WrestlingInstance = inst })
 ```
 
-11. Query contract properties
-The truffle console lets you interact with the contract as if it were deployed to the public Eth blockchain. You can call functions etc.
-Call into contract and get current state of public properties:
+11. Query contract properties. Truffle console lets you interact with the contract as if it were deployed to the public Eth blockchain. You can call functions etc. Call into contract and get current state of public properties:
 ```
 $ WrestlingInstance.<public property>.call()
 ```
 
-12. Calling contract functions
-Call functions in the contract as one of the users that Ganache created and
-we wired up to the truffle cli above.
-`value` is used to send ether from the sender with the txn.
-`web3` is the js library used to talk to Ganache/EVM.
-`.toWei()` converts the amt in Eth to the smallest unit of Ether.
+12. Calling contract functions. Call functions in the contract as one of the users that Ganache created and we wired up to the truffle cli above.
+- `value` is used to send ether from the sender with the txn.
+- `web3` is the js library used to talk to Ganache/EVM.
+- `.toWei()` converts the amt in Eth to the smallest unit of Ether.
 ```
 
 WrestlingInstance.wrestle({from: account0, value: web3.toWei(2, "ether")})
