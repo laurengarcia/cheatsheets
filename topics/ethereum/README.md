@@ -6,7 +6,6 @@
 - [Open Zeppelin Solidity Library for Smart Contract Dev (github)](https://github.com/OpenZeppelin/openzeppelin-solidity/)
 
 ### Tools
-- Truffle cli
-- Ganache cli or gui
+- [Truffle + Ganache](truffle-ganache.md)
 - Solhint: Solidity linter
 - ZepKit: hot reloader for smart contracts by Open Zeppelin
