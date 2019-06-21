@@ -2,13 +2,13 @@
 
 ### Install
 
-##### Truffle CLI
+#### Truffle CLI
 Dev env, test framework, and asset pipeline to prod Ethereum:
 ```
 $ npm install -g truffle
 ```
 
-##### Ganache CLI or GUI
+#### Ganache CLI or GUI
 - Ganache CLI or GUI (was called TestRPC)
 - Run a virtual Eth blockchain locally.
 - Also comes in GUI form as well.
@@ -16,7 +16,7 @@ $ npm install -g truffle
 $ npm install -g ganache-cli
 ```
 
-##### Smart Contract Dependency Flattener
+#### Smart Contract Dependency Flattener
 When you find code in the wild you can use truffle-flattener to compile the contract with all of its dependencies into one .sol file. Install:
 ```
 $ npm install -D truffle-flattener --save
