@@ -122,3 +122,5 @@ You can use different toolings deployment methods, including truffle by just con
 
 [Remix](https://remix.ethereum.org) is pretty awesome, great for debugging, and it has [great docs here](https://remix-ide.readthedocs.io/en/latest/run.html). highly recommend.
 
+One thing to note about Remix is that you'll need to use `truffle-flattener` before deploying. See section at top for details.
+
