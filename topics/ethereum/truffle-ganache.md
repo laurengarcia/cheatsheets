@@ -1,4 +1,4 @@
-# Truffle + Ganache
+# Truffle + Ganache + Deployment
 
 ### Install
 
@@ -24,7 +24,7 @@ Usage:
 $ truffle-flattener ./contracts/examples/Whitelist.sol > flattend.sol
 ```
 
-## Test & Deploy
+## Test & Deploy to Local Ganache
 Reference: [Hackernoon tutorial](https://hackernoon.com/ethereum-development-walkthrough-part-2-truffle-ganache-geth-and-mist-8d6320e12269)
 
 1. Init project
@@ -57,7 +57,7 @@ $ truffle compile
 ```
 
 6. Migration
-In /migrations/2_deploy_contract.js, copy/paste this code (assumes Wrestling.sol is your contract in /contracts):
+In /migrations/2_deploy_contract.js, use something like this code (assumes Wrestling.sol is your contract in /contracts):
 ```
 const Wrestling = artifacts.require("./Wrestling.sol")
 
@@ -66,7 +66,7 @@ module.exports = function(deployer) {
 };
 ```
 
-7. Deploy to blockchain set in truffle-config.js by running this via cli. Contract address is spit out in terminal next to Solidity file name. In Ganache terminal, contract address is next to where it says "Contract created:"
+7. Deploy to local blockchain set in truffle-config.js by running this via cli. Contract address is spit out in terminal next to Solidity file name. In Ganache terminal, contract address is next to where it says "Contract created:"
 
 - NOTE: If there is extra/ unused cruft code in your contracts, it may throw a spurious error related to gas. Go crop that code out (and remove it from build). You'll need to rm -rf the /build dir and re-compile/re-migrate.
 ```
@@ -108,4 +108,17 @@ WrestlingInstance.wrestle({from: account1, value: web3.toWei(20, "ether")})
 // End of the wrestling
 WrestlingInstance.withdraw({ from: account1 })
 ```
+
+## Deploy to Public Network
+
+Make sure you have gas in your Metamask account if its a testnet. There are different faucets for diff't testnets.
+
+* [Kovan faucet link](https://faucet.kovan.network/)
+* [Rinkeby faucet link](https://faucet.rinkeby.io/)
+
+Make sure you're on the right network!
+
+You can use different toolings deployment methods, including truffle by just configuring `truffle-config.js` in your project's home dir.
+
+[Remix](https://remix.ethereum.org) is pretty awesome, great for debugging, and it has [great docs here](https://remix-ide.readthedocs.io/en/latest/run.html). highly recommend.
 
