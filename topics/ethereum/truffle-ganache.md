@@ -1,6 +1,6 @@
 # Truffle + Ganache + Deployment
 
-### Install
+### Install Dependencies
 
 #### Truffle CLI
 Dev env, test framework, and asset pipeline to prod Ethereum:
@@ -24,7 +24,7 @@ Usage:
 $ truffle-flattener ./contracts/examples/Whitelist.sol > flattend.sol
 ```
 
-## Test & Deploy to Local Ganache
+## Init, Test & Deploy Contract to Local Ganache
 Reference: [Hackernoon tutorial](https://hackernoon.com/ethereum-development-walkthrough-part-2-truffle-ganache-geth-and-mist-8d6320e12269)
 
 1. Init project
