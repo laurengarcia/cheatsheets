@@ -38,3 +38,7 @@ $ git log --oneline
 # wipe out local changes to last commit or an earlier commit in log
 $ git reset --hard
 # git reset --hard <git sha>
+
+# git tags (simple)
+$ git tag v1.0
+$ git push origin v1.0
