@@ -1,9 +1,20 @@
-BASH CLI UTILS
+BASH/ CLI UTILS
 --
 
 MAN
 when in doubt, don't forget to just
 $ man <command name>
+
+LOGIN
+When bash is invoked as an interactive login shell, or as a non-interactive shell with the --login option, it first reads and executes commands from the following files, in the following order, and reads and executes commands from
+the first one that exists and is readable:
+
+/etc/profile
+~/.bash_profile
+~/.bash_login
+~/.profile
+
+The --noprofile option may be used when the shell is started to inhibit this behavior.
 
 WHICH & VERSION
 $ which node
@@ -169,15 +180,21 @@ MYSQLDUMP
 $ mysqldump -uroot -p databasename > dumpfile.sql
 
 INSTALLING PACKAGES (unix)
-$ apt-get
+$ apt-get <pkg>
 
 ENCRYPTING ZIP FILES (OSX)
 $ zip -ejr [name] [path to file to encrypt]
+
+GZIP COMPRESS INDIVIDUAL FILE
+$ gzip -9 <filename>
 
 CHECKING APP SIGNATURES (OSX)
 more info: https://origin-discussions-us.apple.com/thread/7889707
 $ codesign -v /Applications/iTunes.app/ -v
 
+(UNIX) CHECKING IPTABLES (FIREWALL SETTINGS)
+another way of managing firewall is via `ufw` on unix machines
+$ sudo iptables -S
 
 TODO:
 $ locate
