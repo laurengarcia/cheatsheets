@@ -1,4 +1,8 @@
 
+Node 6+ has a great debugger built-in:
+node --inspect-brk source/debug.js
+Then open chrome://inspect/#devices
+
 -------------------------------------------------
 Node v6.3 / Script Debugging + Stepping
 
