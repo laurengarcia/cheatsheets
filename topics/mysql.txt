@@ -13,6 +13,8 @@ $ <-- mac command line prompt
 Change pw:
 $ mysqladmin -u root -p [type oldpassword] newpass [hit enter and type new pw]
 
+Security tips:
+https://www.tecmint.com/mysql-mariadb-security-best-practices-for-linux/
 
 Start mysql via CLI:
 $ mysql -u root -p   # <-- prompt to enter root pw
