@@ -1,10 +1,14 @@
-For local/ dev instance on Mac OSX:
-  Install: https://dev.mysql.com/doc/mysql-getting-started/en/
-  Start via Mac0S > System Prefs pane
+Setup local/ dev instance on Mac OSX:
+  - Install: https://dev.mysql.com/doc/mysql-getting-started/en/
+  - Start via Mac0S > System Prefs pane
     -> opens up server UI, can start/stop/config fr there
-  Add alias to ~/.bash_profile:
-    alias mysql=/usr/local/mysql/bin/mysql
-    alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+  - Add alias to ~/.bash_profile:
+      alias mysql=/usr/local/mysql/bin/mysql
+      alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+
+Security tips:
+  https://www.tecmint.com/mysql-mariadb-security-best-practices-for-linux/
+  ^^ Covers creating application-specific users
 
 Note:
 $ <-- mac command line prompt
@@ -12,9 +16,6 @@ $ <-- mac command line prompt
 
 Change pw:
 $ mysqladmin -u root -p [type oldpassword] newpass [hit enter and type new pw]
-
-Security tips:
-https://www.tecmint.com/mysql-mariadb-security-best-practices-for-linux/
 
 Start mysql via CLI:
 $ mysql -u root -p   # <-- prompt to enter root pw
@@ -68,6 +69,38 @@ Create Table: CREATE TABLE `cats` (
 
 delete a column with ALTER TABLE... DROP
 > ALTER TABLE cats DROP gender;
+
+------
+
+Create & Run scripts
+create a new .sql file, "testscript.sql" (can check this into source control)
+ex .sql script:
+```
+/*
+ * My First MySQL Script - testscript.sql.
+ * You need to run this script with an authorized user.
+ */
+SHOW DATABASES;           -- List the name of all the databases in this server
+USE mysql;                -- Set system database 'mysql' as the current db
+SELECT user, host FROM user;   -- List all users by querying table 'user'
+```
+
+To run script in batch, non-interactive mode:
+> mysql -u username -p < path-to/scriptName.sql
+..where path name can be something like: d:\myproject\sqlscripts\testscript.sql
+
+To get "tabel-like" output:
+> mysql -u myuser -p -t < d:/myproject/sqlscripts/testscript.sql
+
+You could also redirect the output to a text file (via the output redirection operator '>'),
+example:
+> mysql -u myuser -p < d:/myproject/sqlscripts/testscript.sql > output.txt
+
+To run script in interactive mode use SOURCE command:
+mysql> SOURCE d:/myproject/sqlscripts/mytestscript.sql
+
+
+
 
 
 
