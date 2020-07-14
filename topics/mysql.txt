@@ -1,0 +1,72 @@
+For local/ dev instance on Mac OSX:
+  Install: https://dev.mysql.com/doc/mysql-getting-started/en/
+  Start via Mac0S > System Prefs pane
+    -> opens up server UI, can start/stop/config fr there
+  Add alias to ~/.bash_profile:
+    alias mysql=/usr/local/mysql/bin/mysql
+    alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+
+Note:
+$ <-- mac command line prompt
+> <-- mysql console prompt
+
+Change pw:
+$ mysqladmin -u root -p [type oldpassword] newpass [hit enter and type new pw]
+
+
+Start mysql via CLI:
+$ mysql -u root -p   # <-- prompt to enter root pw
+
+> SHOW DATABASES;
+> CREATE DATABASE pets
+> USE pets   # <-- sets default db for next statements
+> CREATE TABLE cats
+(
+  id              INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for record
+  name            VARCHAR(150) NOT NULL,                # Name of the cat
+  owner           VARCHAR(150) NOT NULL,                # Owner of the cat
+  birth           DATE NOT NULL,                        # Birthday of the cat
+  PRIMARY KEY     (id)                                  # Make it primary key
+);
+
+check your work:
+> SHOW TABLES;
+> DESCRIBE cats;
+
+insert record:
+> INSERT INTO cats ( name, owner, birth) VALUES
+  ( 'Sandy', 'Lennon', '2015-01-03' ),
+  ( 'Cookie', 'Casey', '2013-11-13' ),
+  ( 'Charlie', 'River', '2016-05-21' );
+
+retrieve records:
+> SELECT * FROM cats;
+> SELECT name FROM cats WHERE owner = 'Casey';
+
+delete records:
+> DELETE FROM cats WHERE name='Cookie';
+
+add a column from a table:
+(an AFTER clause specifies location of new column)
+> ALTER TABLE cats ADD gender CHAR(1) AFTER name;
+
+show the CREATE TABLE statement for updated TABLE:
+> SHOW CREATE TABLE
+*************************** 1. row ***************************
+       Table: cats
+Create Table: CREATE TABLE `cats` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) NOT NULL,
+  `gender` char(1) DEFAULT NULL,
+  `owner` varchar(150) NOT NULL,
+  `birth` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1
+1 row in set (0.00 sec)
+
+delete a column with ALTER TABLE... DROP
+> ALTER TABLE cats DROP gender;
+
+
+
+
