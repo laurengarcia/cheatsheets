@@ -37,7 +37,7 @@ check your work:
 > DESCRIBE cats;
 
 insert record:
-> INSERT INTO cats ( name, owner, birth) VALUES
+> INSERT INTO cats (name, owner, birth) VALUES
   ( 'Sandy', 'Lennon', '2015-01-03' ),
   ( 'Cookie', 'Casey', '2013-11-13' ),
   ( 'Charlie', 'River', '2016-05-21' );
@@ -54,7 +54,7 @@ add a column from a table:
 > ALTER TABLE cats ADD gender CHAR(1) AFTER name;
 
 show the CREATE TABLE statement for updated TABLE:
-> SHOW CREATE TABLE
+> SHOW CREATE TABLE pets;
 *************************** 1. row ***************************
        Table: cats
 Create Table: CREATE TABLE `cats` (
@@ -89,7 +89,7 @@ To run script in batch, non-interactive mode:
 > mysql -u username -p < path-to/scriptName.sql
 ..where path name can be something like: d:\myproject\sqlscripts\testscript.sql
 
-To get "tabel-like" output:
+To get "table-like" output:
 > mysql -u myuser -p -t < d:/myproject/sqlscripts/testscript.sql
 
 You could also redirect the output to a text file (via the output redirection operator '>'),
@@ -99,8 +99,11 @@ example:
 To run script in interactive mode use SOURCE command:
 mysql> SOURCE d:/myproject/sqlscripts/mytestscript.sql
 
+-----
+Delete a database(!)
+** CAUTION **
 
-
+> DROP DATABASE pets;
 
 
 
