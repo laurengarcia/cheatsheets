@@ -21,8 +21,8 @@ Start mysql via CLI:
 $ mysql -u root -p   # <-- prompt to enter root pw
 
 > SHOW DATABASES;
-> CREATE DATABASE pets
-> USE pets   # <-- sets default db for next statements
+> CREATE DATABASE pets;
+> USE pets;   # <-- sets default db for next statements
 > CREATE TABLE cats
 (
   id              INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for record
