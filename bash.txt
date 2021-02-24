@@ -31,6 +31,14 @@ $ ctrl u    # erase the current line
 EXIT
 $ ctrl c    # abort the current command
 
+NETTOP (MacOSX) TO MONITOR TRAFFIC, I/O
+$ nettop
+$ nettop -P  # display i/o by process
+$ nettop -m route  # show each route
+
+Press 'd' to only show active connection traffic while in nettop.
+Press `q` to quit.
+
 FILE SYSTEM NAVIGATION
 $ cd -      # takes you back to previous directory
 $ cd ~      # takes you to home directory
