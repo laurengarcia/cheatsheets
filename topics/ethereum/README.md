@@ -4,6 +4,7 @@
 - [Solidity Docs](https://docs.soliditylang.org/)
 - [Solidity By Example](https://solidity-by-example.org/)
 - [Cryptozombies](https://cryptozombies.io/)
+- [Smart Contract Engineer](https://www.smartcontract.engineer/)
 
 ### Best Practices
 - [Open Zeppelin Solidity Library for Smart Contract Dev (github)](https://github.com/OpenZeppelin/openzeppelin-solidity/)
