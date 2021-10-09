@@ -1,8 +1,9 @@
 # Ethereum
 
-### Solidity
+### Learn Solidity
 - [Solidity Docs](https://docs.soliditylang.org/)
 - [Solidity By Example](https://solidity-by-example.org/)
+- [Cryptozombies](https://cryptozombies.io/)
 
 ### Best Practices
 - [Open Zeppelin Solidity Library for Smart Contract Dev (github)](https://github.com/OpenZeppelin/openzeppelin-solidity/)
