@@ -34,6 +34,7 @@ alias CHEAT="cat $_CHEATDIR/index.txt"
 alias CHEATSB="sublime $_CHEATDIR"
 alias CHEATLS="ls $_CHEATDIR"
 alias CHEATCD="cd $_CHEATDIR"
+alias CHEATGIT="cat $_CHEATDIR/git.txt"
 alias BASH="cat $_CHEATDIR/bash.txt"
 alias ND="cat $_CHEATDIR/topics/node-debug.txt"
 _LOCUS='const locus = require\(\`/usr/local/lib/node_modules/locus\`\)' # <-- global npm locus location

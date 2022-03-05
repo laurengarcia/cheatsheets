@@ -14,7 +14,9 @@ the first one that exists and is readable:
 ~/.bash_login
 ~/.profile
 
-The --noprofile option may be used when the shell is started to inhibit this behavior.
+Use `$ source ~/.bash_profile` to reload in a single bash session/ terminal from that file (can switch it to use the other files listed above if desired).
+
+The --noprofile option may be used when the shell is started to inhibit this behavior. When an interactive shell that is not a login shell is started, bash reads and executes commands from ~/.bashrc, if that file exists.
 
 WHICH & VERSION
 $ which node
@@ -213,4 +215,3 @@ $ sed
 $ printf "yo yo yo\n"
 $ echo
 $ screen
-$ tmux
