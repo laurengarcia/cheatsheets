@@ -4,6 +4,13 @@ $ git init
 # fresh clone of a project on github
 $ git clone https://github.com/<user>/<repo>.git
 
+# checkout remote branch locally, track upstream:
+$ git checkout --track origin/master
+
+# create new branch
+$ git checkout -b foobranch
+$ git checkout -b foobranch --track upstream/foobranch
+
 # upstream settings
 $ git remote -v
 $ git remote add origin https://github.com/<user>/<repo>.git
@@ -12,13 +19,6 @@ $ git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
 # fetch upstream but do not modify working directory
 $ git fetch
 $ git fetch origin
-
-# checkout remote branch locally, track upstream:
-$ git checkout --track origin/master
-
-# create new branch
-$ git checkout -b foobranch
-$ git checkout -b foobranch --track upstream/foobranch
 
 # merge upstream changes with local work
 $ git merge origin/master
@@ -38,6 +38,15 @@ $ git log --oneline
 # wipe out local changes to last commit or an earlier commit in log
 $ git reset --hard
 # git reset --hard <git sha>
+
+# squash last 5 commits into one on a single branch
+# interactive session is triggered,
+# select one line & edit "pick" to say "squash"
+# on the other four, then save & exit
+$ git rebase -i HEAD~5
+
+# squash is also an option when merging feature branches
+$ git merge --squash feature/login
 
 # git tags (simple)
 $ git tag v1.0
