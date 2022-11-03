@@ -28,16 +28,12 @@ export PS1="\u  \[\e[36;40m\]\W\[\e[33;1m\]\$(parse_git_branch)  \[\e[32;1m\]>>\
 # my shortcuts
 alias GH="cd ~/github"
 alias BB="cd ~/bitbucket"
+alias CHEAT="open https://github.com/laurengarcia/cheatsheets"
 
-_CHEATDIR="~/github/cheatsheets"
-alias CHEAT="cat $_CHEATDIR/index.txt"
-alias CHEATSB="sublime $_CHEATDIR"
-alias CHEATLS="ls $_CHEATDIR"
-alias CHEATCD="cd $_CHEATDIR"
-alias CHEATGIT="cat $_CHEATDIR/git.txt"
-alias BASH="cat $_CHEATDIR/bash.txt"
-alias ND="cat $_CHEATDIR/topics/node-debug.txt"
+# node debugging
 _LOCUS='const locus = require\(\`/usr/local/lib/node_modules/locus\`\)' # <-- global npm locus location
 alias LOCUS="echo $_LOCUS\; eval\(locus\)"
+
+# npm debugging
 _NPM="global npm modules location: /usr/local/lib/node_modules"
 alias NPM="echo $_NPM"
