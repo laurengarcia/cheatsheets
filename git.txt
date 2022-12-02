@@ -28,6 +28,14 @@ $ git merge --abort
 $ git pull origin/foobranch
 $ git pull --rebase
 
+# git rebase
+$ git rebase foobranch
+# for `dist/` or other types of built files, 
+# if conflicts occur during an interactive rebase,
+$ git add dist/
+$ git rebase --continue
+# ... then run your `dist` command to rebuild the files at the end
+
 # cherry pick a change into current branch
 $ git cherry-pick -x <git sha>
 
