@@ -186,7 +186,8 @@ $ host 123.123.123.124  # will try to resolve to hostname
 # host google.com       # will try to resolve to ip address
 
 PORTS - WHAT PROCESSES RUNNING ON WHAT PORTS
-$ lsof -i -P | grep 8080    # returns list of processes with PIDs on :8080
+$ lsof -i -P -n | grep LISTEN  # returns list of ports open
+$ lsof -i -P | grep 8080       # returns list of processes with PIDs on :8080
 
 MYSQLDUMP
 $ mysqldump -uroot -p databasename > dumpfile.sql
