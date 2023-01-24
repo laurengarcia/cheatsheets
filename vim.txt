@@ -1,6 +1,6 @@
 # NERDTree
+ctrl-N          # toggle NERDTree
 :help NERDTree  # help docs for NERDTree Plugin
-ctrl-N   # toggle NERDTree
 
 # NAVIGATION
 h        # left
@@ -34,4 +34,4 @@ yy       # copy this line
 p        # paste
 
 # FILE EDITING
-esc :e!  # re-read file from disk (Refresh)
+esc :e!  # re-read file from disk (refresh)
