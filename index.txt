@@ -3,12 +3,11 @@
 Cheatsheet CLI shortcuts:
 
 $ CHEATSB   # open all cheatsheets in sublime
-$ CHEATLS  # ls cheatsheet dir
-$ CHEATCD  # cd into cheatsheet dir
+$ CHEATLS   # ls cheatsheet dir
+$ CHEATCD   # cd into cheatsheet dir
 
-$ BASH     # bash cli cheatsheet
-$ GIT      # man git
-$ NPM      # echo global npm modules dir
-$ LOCUS    # echo out npm locus debugger info
-$ ND       # node debug cheatsheet
+$ BASH      # bash cli cheatsheet
+$ GIT       # man git
+$ NPM       # echo global npm modules dir
+$ ND        # node debug cheatsheet
 -------------------------------------------------
