@@ -38,3 +38,6 @@ UNINSTALL PROJECT DEPENDENCIES
 $ npm uninstall <package_name>
 $ npm uninstall --save <package_name>  // remove from package.json
 $ npm uninstall <@scope/package_name>  // for scoped packages
+
+PACK AS TARBALL IN LOCAL DIR
+$ npm pack // aka `yarn pack`; tarfile can be ref'd in another local repo's deps, ex: `"foo": "file:../foo-v1.0.0.tgz"`
