@@ -13,6 +13,10 @@ $ npm login
 ... bump package version in package.json using semver
 $ npm i  // updates package-lock.json
 $ npm publish ./  // publish bumped version of package to npm repo
+$ npm version prerelease --preid=beta-foobar && npm publish
+
+PACK & TEST AS TARBALL IN LOCAL DIR
+$ npm pack // aka `yarn pack`; tarfile can be ref'd in another local repo's deps, ex: `"foobar": "file:../foobar-v1.0.0.tgz"`
 
 CHECK GLOBAL DEPENDENCIES LOCATION
 $ NPM  // .bashrc shortcut; usually /usr/local/lib/node_modules/
@@ -38,6 +42,3 @@ UNINSTALL PROJECT DEPENDENCIES
 $ npm uninstall <package_name>
 $ npm uninstall --save <package_name>  // remove from package.json
 $ npm uninstall <@scope/package_name>  // for scoped packages
-
-PACK AS TARBALL IN LOCAL DIR
-$ npm pack // aka `yarn pack`; tarfile can be ref'd in another local repo's deps, ex: `"foo": "file:../foo-v1.0.0.tgz"`
