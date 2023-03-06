@@ -59,3 +59,14 @@ $ git merge --squash feature/login
 # git tags (simple)
 $ git tag v1.0
 $ git push origin v1.0
+
+# git push upstream
+$ git push origin <branch name>
+$ git push origin <branch name> -f  # force-push upstream, rewrites history
+
+# recover from bad force-push
+$ git reflog
+# get the git sha of the latest push to remote/ upstream 
+# and use it to reset then force-push upstream
+$ git reset --hard 5e2791da4
+$ git push origin <branch name> -f 
