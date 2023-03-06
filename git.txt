@@ -65,6 +65,7 @@ $ git push origin <branch name>
 $ git push origin <branch name> -f  # force-push upstream, rewrites history
 
 # recover from bad force-push
+$ git branch foobar # first, back up current branch just in case
 $ git reflog
 # get the git sha of the latest push to remote/ upstream 
 # and use it to reset then force-push upstream
