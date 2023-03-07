@@ -2,7 +2,16 @@
 UPDATE NPM
 $ sudo npm install -g npm
 
-MANAGE NODE VERSIONS
+MANAGE NODE VERSIONS WITH `nvm` from local cli
+$ nvm use 16 // https://www.npmjs.com/package/nvm
+
+... or in a project root, add an .nvmrc file 
+with one line specifying version, ex: 16.0.0
+then call it via cli:
+$ nvm use
+
+MANAGE NODE VERSIONS WITH `n`
+Nice for local management
 $ n  // https://www.npmjs.com/package/n
 
 INIT
