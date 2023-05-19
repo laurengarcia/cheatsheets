@@ -20,7 +20,7 @@ parse_git_branch() {
 }
 
 # bash prompt
-export PS1="\u  \[\e[36;40m\]\W\[\e[33;1m\]\$(parse_git_branch)  \[\e[32;1m\]>>\[\e[0m\] "
+export PS1="\u ✨ \[\e[36;40m\]\W\[\e[33;1m\]\$(parse_git_branch) \[\e[32;1m\]>\[\e[0m\] "
 
 # my shortcuts
 alias GH="cd ~/github"
