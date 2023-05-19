@@ -1,0 +1,14 @@
+/bin    - Essential command binaries
+/sbin   - Essential system binaries, usually to be run by root
+/dev    - Device files, special files that often are interfaces to hardware devices
+/etc    - Host-specific system-wide configuration files
+/home   - Home directories for users in the system
+/lib    - Common libraries for system programs
+/opt    - Optional application software
+/sys    - Contains information and configuration for the system 
+/tmp    - Temporary files (also /var/tmp). Usually deleted between reboots.
+/usr/   - Read only user data
+/usr/bin        - Non-essential command binaries
+/usr/sbin       - Non-essential system binaries, usually to be run by root
+/usr/local/bin  - Binaries for user compiled programs
+/var    - Variable files like logs or caches
