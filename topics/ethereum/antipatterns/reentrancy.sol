@@ -1,9 +1,15 @@
 // Reentrancy Attack
 
-// To prevent, it's crucial to follow best practices such as the
-// "Checks-Effects-Interactions" pattern and ensure that external
-// calls are made after all internal state changes. Additionally,
-// use mutexes or checks to prevent reentrant calls.
+// To prevent, it's crucial to follow best practices such as the "Checks-Effects
+// -Interactions" pattern and ensure that external calls are made after all
+// internal state changes.
+
+// Additionally, use mutexes or checks to prevent reentrant calls.
+
+// Where possible, use built-in `transfer` fn when sending ETH to external
+// contracts bc it only sends 2300 gas with the external call, not enough to
+// destination contract to reenter the sending contract.
+
 
 // VulnerableContract.sol
 pragma solidity ^0.8.0;
