@@ -3,7 +3,8 @@
 // `storage` is persistent storage area in blockchain. Variables declared here
 // persist across fn calls and contract invocations. State variables (vars 
 // declared outside of functions) are default stored here. Modifying incurs 
-// gas costs.
+// gas costs. Also, any unitialized var will be allocated to storage, with
+// potential side-effect of clobbering vars intentionally put there.
 
 // `memory` is temporary storage area used during execution of a fn. Vars
 // delcared in `memory` are created and destroyed & don't persist. Free to use

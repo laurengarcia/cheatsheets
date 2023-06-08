@@ -6,20 +6,26 @@
 - [Cryptozombies](https://cryptozombies.io/)
 - [Smart Contract Engineer](https://www.smartcontract.engineer/)
 
-### Best Practices
-- [Open Zeppelin Solidity Library for Smart Contract Dev (github)](https://github.com/OpenZeppelin/openzeppelin-solidity/)
-- [Consensys: Smart Contract Best Practices (github)](https://github.com/ConsenSys/smart-contract-best-practices)
-
-### Tools
+### Dev Tools
+- [Remix IDE](https://remix.ethereum.org/): Solidity IDE in browser
 - [Truffle + Ganache](truffle-ganache.md)
 - [Truffle Flattener](truffle-ganache.md): compiling smart contract & deps
 - [Truffle Box](https://truffle-box.github.io/)
 - [Hardhat](https://hardhat.org/): Dev env w debugging, test
 - [Scaffold-ETH](https://github.com/scaffold-eth/scaffold-eth): Austin Griffith's dev kit
-- [Remix IDE](https://remix.ethereum.org/): Solidity IDE in browser
-- [Radicle](https://radicle.xyz): Decentralized Github w Gnosis integration
 - [Solhint](https://github.com/protofire/solhint): Solidity linter via npm
 - [ZepKit](https://npm.io/search/keyword:zepkit): hot reloader for smart contracts via npm by Open Zeppelin
+
+### Best Practices
+- [Open Zeppelin Solidity Library for Smart Contract Dev (github)](https://github.com/OpenZeppelin/openzeppelin-solidity/)
+- [Consensys: Smart Contract Best Practices (github)](https://github.com/ConsenSys/smart-contract-best-practices)
+
+### Security
+- [Web3 Security Library by Immunefi](https://github.com/immunefi-team/Web3-Security-Library)
+- [Mastering Ethereum Ch 9: Smart Contract Security](https://github.com/ethereumbook/ethereumbook/blob/develop/09smart-contracts-security.asciidoc)
+
+### Security Audit Tools
+- [Fuzzing by Consensys Diligence](https://consensys.net/diligence/fuzzing/)
 
 ### Wallets
 - [Metamask](https://metamask.io)
