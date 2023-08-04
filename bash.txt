@@ -171,7 +171,7 @@ Stream editor - alter files automatically http://www.grymoire.com/unix/sed.html
 $ sed -n -e '/<pre>/,/<\/pre>/p' < data.html # Print only the data between open and close <pre> tags in an HTML doc.
 
 SIMPLE PYTHON SERVER
-$ python -m SimpleHTTPServer 8001  # start a python server from port 8001
+$ python3 -m http.server 9000  # start a python3 server on port 9000
 
 CURLING, PINGING, DOWNLOADING
 $ curl http://google.com       # print contents of

@@ -8,7 +8,7 @@
 
 // `memory` is temporary storage area used during execution of a fn. Vars
 // delcared in `memory` are created and destroyed & don't persist. Free to use
-// in terms of gas, and faster. 
+// in terms of gas, and faster. Can be overwritten.
 
 // `calldata` is used for input parameters and can't be changed, ensures the fn
 // only gets a read-only copy of the data.
