@@ -173,6 +173,11 @@ $ sed -n -e '/<pre>/,/<\/pre>/p' < data.html # Print only the data between open 
 SIMPLE PYTHON SERVER
 $ python3 -m http.server 9000  # start a python3 server on port 9000
 
+SIMPLE NODE SERVER (much faster than python3)
+$ npm install -g http-server
+$ cd <folder to serve from>
+$ http-server
+
 CURLING, PINGING, DOWNLOADING
 $ curl http://google.com       # print contents of
 $ ping http://google.com       # get/time packets
