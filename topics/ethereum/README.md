@@ -17,15 +17,11 @@
 - [ZepKit](https://npm.io/search/keyword:zepkit): hot reloader for smart contracts via npm by Open Zeppelin
 
 ### Best Practices
+- [Open Zeppelin Docs](https://docs.openzeppelin.com/contracts/5.x/)
 - [Open Zeppelin Solidity Library for Smart Contract Dev (github)](https://github.com/OpenZeppelin/openzeppelin-solidity/)
 - [Consensys: Smart Contract Best Practices (github)](https://github.com/ConsenSys/smart-contract-best-practices)
-
-### Security
-- [Web3 Security Library by Immunefi](https://github.com/immunefi-team/Web3-Security-Library)
-- [Mastering Ethereum Ch 9: Smart Contract Security](https://github.com/ethereumbook/ethereumbook/blob/develop/09smart-contracts-security.asciidoc)
-
-### Security Audit Tools
-- [Fuzzing by Consensys Diligence](https://consensys.net/diligence/fuzzing/)
+- [Pattern: MasterChef](https://github.com/sushiswap/sushiswap/blob/271458b558afa6fdfd3e46b8eef5ee6618b60f9d/contracts/MasterChef.sol)
+- [Pattern: Compound III](https://docs.compound.finance/#protocol-contracts)
 
 ### Wallets
 - [Metamask](https://metamask.io)
@@ -34,3 +30,23 @@
 ### JS Libraries
 - [Web3.js](https://web3js.readthedocs.io/)
 - [Ethers.js](https://docs.ethers.io/)
+
+### Security
+- [Web3 Security Library by Immunefi](https://github.com/immunefi-team/Web3-Security-Library)
+- [Mastering Ethereum Ch 9: Smart Contract Security](https://github.com/ethereumbook/ethereumbook/blob/develop/09smart-contracts-security.asciidoc)
+
+### Security Audit Tools
+- [Fuzzing by Consensys Diligence](https://consensys.net/diligence/fuzzing/)
+
+### Security Auditor
+- [How to become smart contract auditor](https://cmichel.io/how-to-become-a-smart-contract-auditor/)
+- [Paradigm CTF solutions](https://cmichel.io/paradigm-ctf-2021-solutions/)
+- [Khan Academy Finance basics](https://www.khanacademy.org/economics-finance-domain/core-finance/derivative-securities)
+- [Blockchain Threat Intelligence](https://newsletter.blockthreat.io/)
+
+### Security Audit Reports
+- [Compound III Audit Report](https://blog.openzeppelin.com/compound-iii-audit)
+
+### Security Audit Platforms
+- [Code4rena](https://code4rena.com/leaderboard?timeframe=All%20time)
+- [ImmuneFi](https://immunefi.com/leaderboard/)
