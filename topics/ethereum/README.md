@@ -50,3 +50,4 @@
 ### Security Audit Platforms
 - [Code4rena](https://code4rena.com/leaderboard?timeframe=All%20time)
 - [ImmuneFi](https://immunefi.com/leaderboard/)
+- [Sherlock](https://audits.sherlock.xyz/leaderboard)
