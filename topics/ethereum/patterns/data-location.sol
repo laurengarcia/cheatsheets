@@ -1,4 +1,4 @@
-// data location
+// Data Location
 
 // `storage` is persistent storage area in blockchain. Variables declared here
 // persist across fn calls and contract invocations. State variables (vars 

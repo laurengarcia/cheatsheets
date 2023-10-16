@@ -42,7 +42,7 @@
 - [How to become smart contract auditor](https://cmichel.io/how-to-become-a-smart-contract-auditor/)
 - [Paradigm CTF solutions](https://cmichel.io/paradigm-ctf-2021-solutions/)
 - [Khan Academy Finance basics](https://www.khanacademy.org/economics-finance-domain/core-finance/derivative-securities)
-- [Blockchain Threat Intelligence](https://newsletter.blockthreat.io/)
+- [Secureum Bootcamp](https://www.youtube.com/playlist?list=PLiAoBT74VLnmK3Kc188fL37aviYjXeaPc)
 
 ### Security Audit Reports
 - [Compound III Audit Report](https://blog.openzeppelin.com/compound-iii-audit)
@@ -51,3 +51,7 @@
 - [Code4rena](https://code4rena.com/leaderboard?timeframe=All%20time)
 - [ImmuneFi](https://immunefi.com/leaderboard/)
 - [Sherlock](https://audits.sherlock.xyz/leaderboard)
+
+### Security Newsletters
+- [Blockchain Threat Intelligence Newsletter](https://newsletter.blockthreat.io/)
+- [Secureum Newsletter](https://secureum.substack.com/)
