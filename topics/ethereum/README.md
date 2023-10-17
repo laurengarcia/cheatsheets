@@ -34,8 +34,10 @@
 ### Security
 - [Web3 Security Library by Immunefi](https://github.com/immunefi-team/Web3-Security-Library)
 - [Mastering Ethereum Ch 9: Smart Contract Security](https://github.com/ethereumbook/ethereumbook/blob/develop/09smart-contracts-security.asciidoc)
+- [Building Secure Contracts](https://github.com/crytic/building-secure-contracts)
 
 ### Security Audit Tools
+- [Slither Static Analysis Tool w explainers by Trail of Bits](https://github.com/crytic/slither/tree/master#detectors)
 - [Fuzzing by Consensys Diligence](https://consensys.net/diligence/fuzzing/)
 
 ### Security Auditor
