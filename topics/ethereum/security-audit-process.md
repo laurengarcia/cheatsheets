@@ -29,6 +29,14 @@
     Docs = "how" its been designed how it is
     Identify gaps between Spec and Docs!
     Test business logic
+      - Access
+      - Asset flow thru system
+      - Control flow
+      - Data flow
+      - Constraints (are constraints faulty?)
+      - Dependencies
+      - Assumptions
+      - Checklists
 
 - Write Report & Present Findings
     Including impact, severity, risk, exploit scenarios (can include code), remediation.

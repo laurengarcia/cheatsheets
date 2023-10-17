@@ -45,6 +45,7 @@
 - [Paradigm CTF solutions](https://cmichel.io/paradigm-ctf-2021-solutions/)
 - [Khan Academy Finance basics](https://www.khanacademy.org/economics-finance-domain/core-finance/derivative-securities)
 - [Secureum Bootcamp](https://www.youtube.com/playlist?list=PLiAoBT74VLnmK3Kc188fL37aviYjXeaPc)
+- [Mudit Gupta Live Audit](https://www.youtube.com/watch?v=LLiJK_VeAvQ)
 
 ### Security Audit Reports
 - [Compound III Audit Report](https://blog.openzeppelin.com/compound-iii-audit)
