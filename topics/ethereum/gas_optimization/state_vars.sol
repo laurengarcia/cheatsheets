@@ -8,7 +8,7 @@
 
 pragma solidity ^0.8.21;
 
-uint constant X = 32**22 + 8;
+uint constant X = 32*22 + 8;
 
 contract C {
     string constant TEXT = "abc";
