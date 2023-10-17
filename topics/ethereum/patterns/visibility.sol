@@ -6,6 +6,7 @@
 // -- State Variables Visibility
 
 // `public`
+// Is default if not marked otherwise.
 // Compiler auto-generates getters, visible to other contracts.
 // When used inside of contract, reference via external access via `this.x`
 // Internal access to `x` comes directly from storage.
@@ -26,6 +27,7 @@
 // An external function cant be called internally, is only avail via `this.f()`
 
 // `public`
+// Is default if not marked otherwise.
 // Part of ABI, can be called internally or via message calls.
 
 // `internal`
