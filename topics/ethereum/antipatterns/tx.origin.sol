@@ -13,7 +13,6 @@
 // sender of the current txn (1 hop).
 
 // Ex:
-
 contract Phishable {
     address public owner;
 
@@ -34,7 +33,6 @@ contract Phishable {
 // engineer victim (the owner of Phishable) to send some form of txn to the
 // address. If victim sends a txn with enough gas to this contract, it will
 // invoke  the fallback fn which calls `withdrawAll`.
-
 import "Phishable.sol";
 contract AttackContract {
 

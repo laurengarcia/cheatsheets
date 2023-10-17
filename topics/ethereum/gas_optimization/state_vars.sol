@@ -5,7 +5,6 @@
 // Immutable state vars also cheaper.
 // Only immutable when deployed.
 // At construction time, can be assigned any number of times.
-
 pragma solidity ^0.8.21;
 
 uint constant X = 32*22 + 8;
