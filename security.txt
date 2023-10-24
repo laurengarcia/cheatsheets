@@ -1,0 +1,39 @@
+SECURITY
+--
+
+MacOS:
+- Enable Firewall
+  - System Preferences > Security & Privacy > Firewall. Ensure its configured
+    correctly to protect from unauthorized connections.
+- Check for open ports
+  - Shortcut in .bash_profile: `$ open-ports`
+  - run `$ ps -p <PID>` for details on any process you don't recognize
+  - run `$ lsof -p <PID>` to see what files/ ports its touching
+- Check installed applications as well as Activity Monitor for suspicious apps
+  - Check for any unfamiliar processes or applications running, especially ones
+    using high CPU usage.
+  - Sort by user and verify they're all friendly.
+  - Check chatty items the network tab, too.
+- Startup Items
+  - System Prefs > Users & Groups > Login Items, make sure apps running are ok.
+- Disable Remote Access
+  - System Preferences > Sharing and ensure that remote access options are disabled
+
+Browser:
+- Review browser extensions
+  - Install the right one, not a malware version (double check!)
+  - Toggle them on and off as needed
+- Careful w downloads
+  - Try just opening doc in the (sandboxed) browser if you dont need a copy
+  - Run doc thru a virus scanner if downloading
+- Careful w links
+  - Don't click shit!
+- Be extra careful with Electron apps, can be very insecure.
+
+POSIX:
+- `ufw` for firewall
+- use `$ open-ports` alias in .bash_profile
+- `htop` (or just `top`) to observe running processes
+  - check `user` on each process to ensure its friendly
+  - run `$ ps -p <PID>` for details on any process you don't recognize
+  - run `$ lsof -p <PID>` to see what files/ ports its touching
