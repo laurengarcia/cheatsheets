@@ -3,8 +3,10 @@
 ### Learn Solidity
 - [Solidity Docs](https://docs.soliditylang.org/)
 - [Solidity By Example](https://solidity-by-example.org/)
-- [Cryptozombies](https://cryptozombies.io/)
+- [Dev DAO](https://github.com/Developer-DAO/resources)
 - [Smart Contract Engineer](https://www.smartcontract.engineer/)
+- [Cryptozombies](https://cryptozombies.io/)
+
 
 ### Dev Tools
 - [Remix IDE](https://remix.ethereum.org/): Solidity IDE in browser
