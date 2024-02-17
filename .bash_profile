@@ -1,7 +1,30 @@
 # PATH general use
 export PATH="/usr/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/bin/python3:$PATH"
+
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
+
+# Silence MacOS deprecation warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# Node NVM version mgmt
+# nvm -v
+# nvm ls
+# nvm use v20.0.0
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# Python3
+export PYTHON=/opt/homebrew/bin/python3
+alias python='/opt/homebrew/bin/python3'
 
 # fancy ls
 alias ls="ls -Gh"
@@ -14,7 +37,7 @@ alias whoami="whoami && echo @$_HOST"
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-# git branch in bash prompt
+# git branch in prompt
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
@@ -22,10 +45,9 @@ parse_git_branch() {
 # bash prompt
 export PS1="\u ✨ \[\e[36;40m\]\W\[\e[33;1m\]\$(parse_git_branch) \[\e[32;1m\]>\[\e[0m\] "
 
-# my shortcuts
+# my dir shortcuts
 alias GH="cd ~/github"
-alias BB="cd ~/bitbucket"
 alias CHEAT="open https://github.com/laurengarcia/cheatsheets"
 
-# check open ports
+# check for open ports
 alias open-ports="lsof -i -P -n | grep LISTEN"
