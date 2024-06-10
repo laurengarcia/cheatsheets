@@ -1,0 +1,11 @@
+{
+  "bootstrapped": true,
+  "installed_packages":
+  [
+    "Ethereum",
+    "Package Control",
+  ],
+  "in_process_packages":
+  [
+  ],
+}

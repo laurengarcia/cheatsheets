@@ -3,6 +3,9 @@
 Cheatsheet CLI shortcuts:
 
 $ CHEAT     # open cheatsheets in browser
-$ GIT       # man git
+$ GH        # cd to local github dir
 $ NPM       # echo global npm modules dir
+
+$ SHORT     # cat my shortcuts!
 -------------------------------------------------
+

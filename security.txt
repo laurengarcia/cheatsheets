@@ -6,7 +6,7 @@ MacOS:
   - System Preferences > Security & Privacy > Firewall. Ensure its configured
     correctly to protect from unauthorized connections.
 - Check for open ports
-  - Shortcut in .bash_profile: `$ open-ports`
+  - Shortcut in .bash_profile: `$ check-ports`
   - run `$ ps -p <PID>` for details on any process you don't recognize
   - run `$ lsof -p <PID>` to see what files/ ports its touching
 - Check installed applications as well as Activity Monitor for suspicious apps
@@ -17,7 +17,11 @@ MacOS:
 - Startup Items
   - System Prefs > Users & Groups > Login Items, make sure apps running are ok.
 - Disable Remote Access
-  - System Preferences > Sharing and ensure that remote access options are disabled
+  - System Preferences > General > Sharing and ensure that remote access options are disabled
+- Turn on FileVault
+  - Apple M1 and later have disk encryption by default
+  - FileVault on requires login password to decrypt data
+  - Enable in Settings > Privacy & Security > FileVault
 
 Browser:
 - Review browser extensions
