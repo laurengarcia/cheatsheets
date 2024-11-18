@@ -48,6 +48,11 @@ to wipe out local changes up to last commit or an earlier commit in log
 $ git reset --hard
 # git reset --hard <git sha>
 
+COMMIT
+$ git commit -a -m "just did the thing"
+$ git commit --amend
+...drops you into text editor to change msg on last commit
+
 SQUASH last 5 commits into one on a single branch
 an interactive session is triggered,
 select one line & edit "pick" to say "squash"
@@ -63,10 +68,11 @@ $ git push origin v1.0
 
 PUSH TO REMOTE
 $ git push origin <branch name>
-$ git push origin <branch name> -f  # force-push to remote rewrites history
+$ git push origin <branch name> -f  # force-push to remote
+force-pushing rewrites history; use with caution!
 
 REFLOG
-use to recover from bad force-push
+use to recover from bad force-push; use with caution!
 $ git branch foobar-bak # first! back up current branch just in case
 $ git reflog
 ... get the git sha of the latest push to remote
