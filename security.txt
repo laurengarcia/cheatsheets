@@ -14,10 +14,10 @@ MacOS:
     using high CPU usage.
   - Sort by user and verify they're all friendly.
   - Check chatty items the network tab, too.
-- Startup Items
+- Startup items
   - System Prefs > Users & Groups > Login Items, make sure apps running are ok.
-- Disable Remote Access
-  - System Preferences > General > Sharing and ensure that remote access options are disabled
+- Disable remote access
+  - System Prefs > General > Sharing to ensure remote access options are disabled
 - Turn on FileVault
   - Apple M1 and later have disk encryption by default
   - FileVault on requires login password to decrypt data
@@ -27,16 +27,16 @@ Browser:
 - Review browser extensions
   - Install the right one, not a malware version (double check!)
   - Toggle them on and off as needed
+- Careful w links, esp via email
+  - Don't click shit!
 - Careful w downloads
   - Try just opening doc in the (sandboxed) browser if you dont need a copy
   - Run doc thru a virus scanner if downloading
-- Careful w links
-  - Don't click shit!
 - Be extra careful with Electron apps, can be very insecure.
 
 POSIX:
 - `ufw` for firewall
-- use `$ open-ports` alias in .bash_profile
+- use `$ check-ports` alias in .bash_profile to scan for open ports
 - `htop` (or just `top`) to observe running processes
   - check `user` on each process to ensure its friendly
   - run `$ ps -p <PID>` for details on any process you don't recognize

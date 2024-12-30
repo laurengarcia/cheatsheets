@@ -1,7 +1,12 @@
+[SEEMS RESOLVED IN LATEST VERSIONS]
+
 Docker on MacOS is known to have performance issues.
 Filesystem access is slow.
 
 Troubleshooting:
-- MacOS 12.5+ > Docker Settings > "Choose file sharing implementation for your containers" > choose VirtioFS (or gRPC Fuse). 
-- Try running with an M1-specific NodeJS image (https://hub.docker.com/r/arm64v8/node/) by modifying your Dockerfile 
-- If project is configured to run eslint at compile time, try setting .env file to DISABLE_ESLINT_PLUGIN=true & only use eslint on commits.
+
+  - MacOS 12.5+ > Docker Settings > "Choose file sharing implementation for your containers" > choose VirtioFS (or gRPC Fuse).
+
+  - Try running with an M1-specific NodeJS image (https://hub.docker.com/r/arm64v8/node/) by modifying your Dockerfile
+
+  - If project is configured to run eslint at compile time, try setting .env file to DISABLE_ESLINT_PLUGIN=true & only use eslint on commits.

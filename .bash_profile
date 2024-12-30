@@ -15,7 +15,7 @@ fi
 # Silence MacOS deprecation warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# Node NVM version mgmt
+# Node NVM version mgmt, usage ex:
 # nvm -v
 # nvm ls
 # nvm use v20.0.0
