@@ -42,6 +42,9 @@ $ git cherry-pick -x <git sha>
 LOGS
 $ git log
 $ git log --oneline
+$ git log --graph
+$ git log --graph --all
+$ git log --graph --oneline --branches
 
 RESET
 to wipe out local changes up to last commit or an earlier commit in log
