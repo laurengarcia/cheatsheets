@@ -4,17 +4,16 @@ Cheatsheet CLI shortcuts:
 
 $ SHORT         # cat my shortcuts in cli!
 $ CHEAT         # open cheatsheets in browser
+$ GH            # cd ~/github
+$ NPM           # "npm root -g"
 
-Node.js:
-$ NPM            # "npm root -g"
+Security:
+$ check-ports
+$ check-sign /path/to/binary
 
 Node.js NVM version mgmt, usage ex:
 $ nvm -v
 $ nvm ls
 $ nvm use v20.0.0
-
-Security:
-$ check-ports
-$ check-sign /path/to/binary
 
 -------------------------------------------------
