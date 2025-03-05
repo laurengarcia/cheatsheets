@@ -19,15 +19,15 @@ Monitor ports:
   - $ sudo lsof -i -P | grep ESTABLISHED  # Check active connections to internet are known applications
   - $ sudo lsof -i -P | grep LISTEN       # Check if process is listening to a port
   - $ nc -zv 127.0.0.1 <port#>            # Check if port is accepting external connections
-  - $ nc -zv <your mac ip> <port#>        # Check if port is accepting external connections from another device
+  - $ nc -zv <your mac ip> <port#>        # Check if port is accepting external connections fr another device
 
 Monitor network traffic:
-  - $ nettop -p <PID>
+  - $ nettop -p <pid>
   - $ sudo nettop -m tcp
 
 Monitor processes:
-  - $ ps aux <PID>
-  - $ lsof -p <PID> | grep text  # last column is full path to binary
+  - $ ps aux <pid>
+  - $ lsof -p <pid> | grep text  # last column is full path to binary
   - $ ps aux | grep com.apple.  # If anything is running from /tmp, /Users, or an unknown path, it’s suspicious.
   - $ ps aux | grep -i log  # Check for keloggers w word "log" in them
   - $ ps aux | grep -i key  # Check for keyloggers w word "key" in them
