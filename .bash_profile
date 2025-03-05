@@ -52,7 +52,7 @@ alias GH="cd ~/github"
 alias NPM="npm root -g"
 
 # security checks
-alias check-ports="lsof -i -P -n | grep LISTEN && lost -i -P -n | grep ESTABLISHED"
+alias check-ports="lsof -i -P -n | grep LISTEN && lsof -i -P -n | grep ESTABLISHED"
 alias check-sign='function _checksign() {
   if [[ -z "$1" ]]; then
     echo -e "\033[1;31m[ERROR]\033[0m Usage: checksign /path/to/binary";
