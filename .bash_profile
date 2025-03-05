@@ -46,7 +46,7 @@ parse_git_branch() {
 export PS1="\u ✨ \[\e[36;40m\]\W\[\e[33;1m\]\$(parse_git_branch) \[\e[32;1m\]>\[\e[0m\] "
 
 # my dir shortcuts
-alias SHORT="cat ~/github/cheatsheets/index.txt"
+alias SH="cat ~/github/cheatsheets/index.txt"
 alias CHEAT="open https://github.com/laurengarcia/cheatsheets"
 alias GH="cd ~/github"
 alias NPM="npm root -g"

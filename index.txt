@@ -2,7 +2,7 @@
 -------------------------------------------------
 Cheatsheet CLI shortcuts:
 
-$ SHORT         # cat my shortcuts in cli!
+$ SH            # cat my shortcuts in cli!
 $ CHEAT         # open cheatsheets in browser
 $ GH            # cd ~/github
 $ NPM           # "npm root -g"
