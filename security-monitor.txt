@@ -27,10 +27,8 @@ Monitor network traffic:
 
 Monitor processes:
   - $ ps aux <pid>
-  - $ lsof -p <pid> | grep text  # last column is full path to binary
-  - $ ps aux | grep com.apple.  # If anything is running from /tmp, /Users, or an unknown path, it’s suspicious.
-  - $ ps aux | grep -i log  # Check for keloggers w word "log" in them
-  - $ ps aux | grep -i key  # Check for keyloggers w word "key" in them
+  - $ lsof -p <pid> | grep <process name>  # last column = full path to binary
+  - $ ps aux | grep com.apple.  # Anything running fr /tmp, /Users, or unknown path, is suspicious
 
 Monitor chatty processes:
   - $ sudo launchctl list | grep xpc  # check xpc peers, all should be signed com.apple.* services
@@ -68,6 +66,10 @@ Dump recent logs:
 Check accessibility on OSX, screen recording permissions:
   - sudo sqlite3 "/Library/Application Support/com.apple.TCC/TCC.db" "SELECT client FROM access WHERE service='kTCCServiceAccessibility';" # keyboard & mouse
   - sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "SELECT client FROM access WHERE service='kTCCServiceScreenRecording';"  # screen recording
+
+Check for keyloggers:
+  - $ ps aux | grep -i log  # word "log" in them
+  - $ ps aux | grep -i key  # word "key" in them
 
 Check for keylogger kernel extensions to operate at low level:
   - kextstat
