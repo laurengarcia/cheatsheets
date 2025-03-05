@@ -99,13 +99,13 @@ $ ln index.js ~/some/other/place.js  # symlink first file to second file or dir
 
 PROCESS CONTROL
 $ ps                 # all processes in shell
-$ ps -p <proc id>    # list info about a specific process by process id
+$ ps -p <pid>        # list info re: specific process by process id
 $ ps-ax              # all processes on machine
 $ ps aux | grep node # all processes on machine whose name contains "node"
 $ top                # all processes running on machine
 $ htop               # process monitor, needs installation usually
-$ kill -9 1234       # force-quit prcess with PID 1234
-$ jobs -l            # determine PID's in terminal
+$ kill -9 1234       # force-quit prcess with pid 1234
+$ jobs -l            # determine pid's in terminal
 
 FOREGROUND AND BACKGROUND PROCESSES
 (where program is called `count` in these examples)
@@ -152,7 +152,6 @@ $ diff -bw file1 file2  # diff but ignore whitespace
 
 VIM EDITING
 $ vim <filename>
-$ vi <filename>
 
 LESS
 $ less file1.txt     # read contents of file1.txt, type q to quit
@@ -192,9 +191,10 @@ $ host 123.123.123.124  # will try to resolve to hostname
 # host google.com       # will try to resolve to ip address
 
 LSOF - LIST OPEN FILES
-$ lsof -p <process id>         # list files opened by process id
-$ lsof -i -P | grep 8080       # returns list of processes with PIDs on :8080
-$ lsof -i -P -n | grep LISTEN  # returns list of open ports
+$ lsof -p <process id>           # list files opened by process id
+$ lsof -i -P | grep 8080         # returns list of processes with PIDs on :8080
+$ lsof -i -P -n | grep LISTEN    # returns list of open ports
+$ lsof -p <port id> | grep text  # returns full path to binary
 
 MYSQLDUMP
 $ mysqldump -uroot -p databasename > dumpfile.sql

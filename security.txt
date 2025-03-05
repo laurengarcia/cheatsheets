@@ -1,43 +1,65 @@
 SECURITY
+
+BROWSING/EMAIL:
 --
+- Review browser extensions
+  - Install the right one, not a malware version (double check!)
+  - Toggle them on and off as needed
+
+- Careful w links, esp via email
+  - Don't click shit!
+
+- Careful w downloads
+  - Try just opening doc in the (sandboxed) browser if you dont need a copy
+  - Run doc thru a virus scanner if downloading
+
+- Be extra careful with Electron apps, can be very insecure.
+
 
 MacOS:
+--
 - Enable Firewall
   - System Preferences > Security & Privacy > Firewall. Ensure its configured
     correctly to protect from unauthorized connections.
+
 - Check for open ports
   - Shortcut in .bash_profile: `$ check-ports`
   - run `$ ps -p <PID>` for details on any process you don't recognize
   - run `$ lsof -p <PID>` to see what files/ ports its touching
+
 - Check installed applications as well as Activity Monitor for suspicious apps
   - Check for any unfamiliar processes or applications running, especially ones
     using high CPU usage.
   - Sort by user and verify they're all friendly.
-  - Check chatty items the network tab, too.
+  - Check chatty items the network tab or nettopq, too.
+
 - Startup items
   - System Prefs > Users & Groups > Login Items, make sure apps running are ok.
+
 - Disable remote access
   - System Prefs > General > Sharing to ensure remote access options are disabled
+
+- Disable/ Review all settings, esp:
+  - System Prefs > General > Airdrop & Handoff
+  - System Prefs > Privacy & Security > Screen Recording
+  - System Prefs > Privacy & Security > Accessibility
+  - System Prefs > Privacy & Security > Input Monitoring
+  - System Prefs > Privacy & Security > Microphone
+  - System Prefs > Privacy & Security > Camera
+
 - Turn on FileVault
   - Apple M1 and later have disk encryption by default
-  - FileVault on requires login password to decrypt data
+  - FileVault "on" requires login password to decrypt data
   - Enable in Settings > Privacy & Security > FileVault
 
-Browser:
-- Review browser extensions
-  - Install the right one, not a malware version (double check!)
-  - Toggle them on and off as needed
-- Careful w links, esp via email
-  - Don't click shit!
-- Careful w downloads
-  - Try just opening doc in the (sandboxed) browser if you dont need a copy
-  - Run doc thru a virus scanner if downloading
-- Be extra careful with Electron apps, can be very insecure.
 
 POSIX:
+--
 - `ufw` for firewall
+
 - use `$ check-ports` alias in .bash_profile to scan for open ports
-- `htop` (or just `top`) to observe running processes
+
+- `nettop` or `htop` to observe running processes
   - check `user` on each process to ensure its friendly
   - run `$ ps -p <PID>` for details on any process you don't recognize
   - run `$ lsof -p <PID>` to see what files/ ports its touching
