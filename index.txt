@@ -3,9 +3,8 @@
 Cheatsheet CLI shortcuts:
 
 $ CHEAT     # open cheatsheets in browser
-$ GH        # cd to local github dir
-$ NPM       # echo global npm modules dir
+$ SHORT     # cat my shortcuts in cli!
 
-$ SHORT     # cat my shortcuts!
+$ check-ports
+$ check-sign /path/to/binary
 -------------------------------------------------
-

@@ -51,5 +51,14 @@ alias CHEAT="open https://github.com/laurengarcia/cheatsheets"
 alias GH="cd ~/github"
 alias NPM="npm root -g"
 
-# check for open ports
-alias check-ports="lsof -i -P -n | grep LISTEN"
+# security checks
+alias check-ports="lsof -i -P -n | grep LISTEN && lost -i -P -n | grep ESTABLISHED"
+alias check-sign='function _checksign() {
+  if [[ -z "$1" ]]; then
+    echo -e "\033[1;31m[ERROR]\033[0m Usage: checksign /path/to/binary";
+    return 1
+  fi
+  echo -e "\033[1;34m[INFO]\033[0m ---- Checking codesign details for: \033[1;33m$1\033[0m"
+  codesign -vvv --display "$1" && echo -e "\033[1;34m[INFO]\033[0m ---- Display check complete. ----"
+  codesign --verify --verbose=4 "$1" && echo -e "\033[1;34m[INFO]\033[0m ---- Verification check complete. ----" || echo -e "\033[1;31m[FAILED]\033[0m Signature verification failed!"
+}; _checksign'

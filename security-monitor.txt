@@ -1,77 +1,84 @@
 🚨 Find something suspicious?
 
 $ kill -9 <PID>
-$ sudo rm -rf /Library/LaunchDaemons/suspicious.plist  # remove the launch daemon
+$ sudo rm -rf /Library/LaunchDaemons/suspicious.plist  # remove a launch daemon
 
 Check /Applications, /usr/local/bin/, and /var/root/ for suspicious files.
 Restart your Mac in Safe Mode and re-check for persistence.
 Consider a full macOS reinstall if the infection persists.
-
+-------------------------------------------------------------------------------
 
 Basic checks:
-  - $ check-ports     # Shortcut for lsof -i -P -n | grep LISTEN
+  - $ check-ports     # ✨Custom shortcut
   - $ last | head -5  # Check last 5 logins
   - $ csrutil status  # Verify macOS's System Integrity Protection (SIP)
   - $ diskutil verifyVolume /    # File system verification, run from ~
   - $ nl /etc/hosts   # View /etc/hosts w line numbers
 
-  Monitor ports:
+Monitor ports:
   - $ sudo lsof -i -P | grep ESTABLISHED  # Check active connections to internet are known applications
   - $ sudo lsof -i -P | grep LISTEN       # Check if process is listening to a port
   - $ nc -zv 127.0.0.1 <port#>            # Check if port is accepting external connections
   - $ nc -zv <your mac ip> <port#>        # Check if port is accepting external connections from another device
 
-  Monitor network traffic:
-  - $ nettop -p <PID>       # Monitor a specific process
+Monitor network traffic:
+  - $ nettop -p <PID>
   - $ sudo nettop -m tcp
 
-  Monitor processes:
+Monitor processes:
   - $ ps aux <PID>
   - $ lsof -p <PID> | grep text  # last column is full path to binary
   - $ ps aux | grep com.apple.  # If anything is running from /tmp, /Users, or an unknown path, it’s suspicious.
   - $ ps aux | grep -i log  # Check for keloggers w word "log" in them
   - $ ps aux | grep -i key  # Check for keyloggers w word "key" in them
 
-  Monitor chatty processes:
+Monitor chatty processes:
   - $ sudo launchctl list | grep xpc  # check xpc peers, all should be signed com.apple.* services
   - $ sudo lsof -i -P | grep rapportd  # check for suspicious network connections thru rapportd
   - $ sudo nettop -m tcp -p rapportd  # check rapportd is not transmitting data in or out
 
-  Run `codesign` to check CA on processes; must run both of these!
+Monitor filesystem usage - can only run 1 of these cmds at a time
+  - $ sudo fs_usage  # all fs activity
+  - $ sudo fs_usage -w | grep -E "CommCenter|iRat"
+
+Run `codesign` to check CA on processes; must run both of these!
+  - $ check-sign /path/to/suspicious/process/binary  # ✨Custom shortcut
   - $ codesign -vvv --display /path/to/suspicious/process/binary  # ✅ should say `Authority = Apple Root CA`
   - $ codesign --verify --verbose=4 /path/to/binary  # ✅ verify signature is valid!
         ex output for valid signed:
           /Applications/Safari.app: ✅ valid on disk
           /Applications/Safari.app: ✅ satisfies its Designated Requirement
 
-  Firewall (packet filter): block external connections to port
+Firewall (packet filter): block external connections to port
     --> this only works once per restart for most processes managed by launchd
   $ echo "block drop quick proto tcp from any to any port <port#>" | sudo pfctl -ef -
   $ nc -zv 127.0.0.1 <port#>       # Check if this^^ worked
   $ sudo pfctl -sr | grep <port#>  # Rules should show up; if no rules show up its not blocking
 
-  Monitor logs:
-  - log stream --predicate 'eventMessage contains "iRat"' --info  # Monitor iRat logs
-  - log stream --predicate 'process == "CommCenter"' --info       # Monitor CommCenter logs
+Monitor logs:
+  - log stream --predicate 'eventMessage contains "iRat"' --info
+  - log stream --predicate 'process == "CommCenter"' --info
 
-  Dump recent logs:
-  - $ log show --predicate 'eventMessage contains "iRat"' --info --debug --last 24h  # Check logs for iRat
-  - $ log show --predicate 'process == "CommCenter"' --info --debug --last 24h       # Monitor CommCenter which manages iRat
+Dump recent logs:
+  - $ log show --predicate 'eventMessage contains "iRat"' --info --debug --last 24h
+  - $ log show --predicate 'process == "CommCenter"' --info --debug --last 24h
   - $ log show --start "2025-02-28 11:25:00" --end "2025-02-28 11:41:00"
   - $ log show --predicate 'eventMessage contains "iRat"' --start "2025-02-28 11:25:00" --end "2025-02-28 11:41:00"
 
-  Check accessibility on OSX, screen recording permissions:
+Check accessibility on OSX, screen recording permissions:
   - sudo sqlite3 "/Library/Application Support/com.apple.TCC/TCC.db" "SELECT client FROM access WHERE service='kTCCServiceAccessibility';" # keyboard & mouse
   - sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "SELECT client FROM access WHERE service='kTCCServiceScreenRecording';"  # screen recording
 
-  Check for keylogger kernel extensions to operate at low level:
+Check for keylogger kernel extensions to operate at low level:
+  - kextstat
   - kextstat | grep -i log  # all should be known apple logging tools
 
 
+-------------------------------------------------------------------------------
 🚨 Find something suspicious?
 
 $ kill -9 <PID>
-$ sudo rm -rf /Library/LaunchDaemons/suspicious.plist  # remove the launch daemon
+$ sudo rm -rf /Library/LaunchDaemons/suspicious.plist  # remove a launch daemon
 
 Check /Applications, /usr/local/bin/, and /var/root/ for suspicious files.
 Restart your Mac in Safe Mode and re-check for persistence.
