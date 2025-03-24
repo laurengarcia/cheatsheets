@@ -15,12 +15,13 @@ fi
 # Silence MacOS deprecation warning
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# Node NVM version mgmt, usage ex:
-# nvm -v
-# nvm ls
-# nvm use v20.0.0
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# Set nvm default
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm use 22  # Use Node 22 by default
+# Print info
+echo "Current Node.js version: $(node -v)"
+echo "NVM default version: $(nvm alias default)"
 
 # Python3
 export PYTHON=/opt/homebrew/bin/python3
