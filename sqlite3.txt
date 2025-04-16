@@ -1,0 +1,16 @@
+EXPLORE FROM CLI
+$ sqlite3 your.db
+> .help
+
+LIST TABLES
+> .tables
+
+TABLE STRUCTURE
+> .schema <table name>
+
+DETAILED TABLE STRUCTURE
+> PRAGMA table_info(<table name>);
+> .fullschema
+
+TABLE DELETE
+> DROP TABLE IF EXISTS <table name>;
