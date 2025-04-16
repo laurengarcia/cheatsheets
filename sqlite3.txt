@@ -12,5 +12,9 @@ DETAILED TABLE STRUCTURE
 > PRAGMA table_info(<table name>);
 > .fullschema
 
+HEADERS ON
+> .headers ON
+> select * from <table name>;
+
 TABLE DELETE
 > DROP TABLE IF EXISTS <table name>;
