@@ -5,27 +5,30 @@ FRESH CLONE FROM GITHUB
 $ git clone https://github.com/<user>/<repo>.git
 
 CHECKOUT remote branch locally, track upstream
-$ git checkout --track origin/master
-
-CREATE NEW BRANCH
-$ git checkout -b foobranch
-$ git checkout -b foobranch --track upstream/foobranch
+$ git checkout --track origin/main
 
 SET REMOTE
 $ git remote -v
 $ git remote add origin https://github.com/<user>/<repo>.git
 $ git remote set-url origin https://github.com/<user>/<repo>.git
 
+LOGS
+$ git log
+$ git log --oneline
+$ git log --graph
+$ git log --graph --all
+$ git log --graph --oneline --branches
+
+CREATE NEW BRANCH
+$ git checkout -b main
+$ git checkout -b main --track upstream/main
+
 FETCH upstream without modifying working dir
 $ git fetch
 $ git fetch origin
 
-MERGE upstream changes with local work
-$ git merge origin/master
-$ git merge --abort
-
 FETCH AND MERGE in one command
-$ git pull origin/foobranch
+$ git pull origin main
 $ git pull --rebase
 
 REBASE
@@ -36,15 +39,12 @@ $ git add dist/
 $ git rebase --continue
 ... then run your `dist` command to rebuild the files at the end
 
+MERGE upstream changes with local work (careful w this!)
+$ git merge origin/main
+$ git merge --abort
+
 CHERRY PICK a change into current branch
 $ git cherry-pick -x <git sha>
-
-LOGS
-$ git log
-$ git log --oneline
-$ git log --graph
-$ git log --graph --all
-$ git log --graph --oneline --branches
 
 RESET
 to wipe out local changes up to last commit or an earlier commit in log
