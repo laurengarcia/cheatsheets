@@ -23,6 +23,12 @@ nvm use 22  # Use Node 22 by default
 echo "Current Node.js version: $(node -v)"
 echo "NVM default version: $(nvm alias default)"
 
+# Always use Socket Firewall for npm & pnpm
+# To install: npm i -g sfw
+# To test firewall (should be blocked): sfw npm install lodash
+alias npm='sfw npm'
+alias pnpm='sfw pnpm'
+
 # Python3
 export PYTHON=/opt/homebrew/bin/python3
 alias python='/opt/homebrew/bin/python3'
