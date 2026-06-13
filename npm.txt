@@ -15,6 +15,14 @@ $ nvm use
 INIT
 $ npm init  // generate package.json file for a project
 
+AUTH/ ACCESS TOKENS
+log into npmjs.com, visit https://www.npmjs.com/settings/laurengarcia/tokens/
+generate new token
+paste into ~/.npmrc or reference via env var from shell by exporting NPM_TOKEN var
+these should now work:
+$ npm login
+$ npm whoami
+
 PACKAGE MANAGEMENT WORKFLOW
 $ npm login
 ... bump package version in package.json using semver
