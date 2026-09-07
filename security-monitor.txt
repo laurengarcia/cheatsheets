@@ -35,6 +35,15 @@ Monitor chatty processes:
   - $ sudo lsof -i -P | grep rapportd  # check for suspicious network connections thru rapportd
   - $ sudo nettop -m tcp -p rapportd  # check rapportd is not transmitting data in or out
 
+Monitor sudo commands run:
+  - log show --predicate 'process == "sudo"' --info --last 1d
+
+Monitor all commands run:
+   - ls -la /var/audit/
+   - sudo praudit -l /var/audit/current | grep -i exec
+   # or, filtered to exec events:
+   - sudo auditreduce -c ex /var/audit/* 2>/dev/null | sudo praudit -l
+
 Monitor filesystem usage - can only run 1 of these cmds at a time
   - $ sudo fs_usage  # all fs activity
   - $ sudo fs_usage -w | grep -E "CommCenter|iRat"
@@ -75,6 +84,21 @@ Check for keylogger kernel extensions to operate at low level:
   - kextstat
   - kextstat | grep -i log  # all should be known apple logging tools
 
+Monitor sharing (ensure it's off):
+  - sharing -l
+
+Monitor remote logins/ events:
+  - last | head -30  # local and remote sessions
+  - sudo systemsetup -getremotelogin
+  - sudo systemsetup -getremoteappleevents
+  - sudo launchctl list | grep -iE "screensharing|remotemanagement|ard|ftp"
+
+Monitor Admin rights & login accounts:
+  - dscl . -read /Groups/admin GroupMembership
+  - dscl . -list /Users UniqueID | awk '$2 >= 500 {print}'
+  # monitor for backdoor accounts
+  - dscl . -list /Users IsHidden | grep ' 1$'
+  - dscl . -list /Users UserShell | grep -vE '/usr/bin/false|/dev/null'  # _mbsetupuser and _uucp expected = Apple system
 
 -------------------------------------------------------------------------------
 🚨 Find something suspicious?
