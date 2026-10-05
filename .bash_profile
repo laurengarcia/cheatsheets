@@ -63,3 +63,10 @@ alias check-sign='function _checksign() {
   codesign -vvv --display "$1" && echo -e "\033[1;34m[INFO]\033[0m ---- Display check complete. ----"
   codesign --verify --verbose=4 "$1" && echo -e "\033[1;34m[INFO]\033[0m ---- Verification check complete. ----" || echo -e "\033[1;31m[FAILED]\033[0m Signature verification failed!"
 }; _checksign'
+
+# curl x402 endpoints and convert from base64
+# usage: x402h "http://localhost:4021/api/v1/x402/proxy/extract/url-content?url=https://example.com"
+x402h() {
+  curl -s -D - -o /dev/null "$@" \
+    | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const m=s.match(/^payment-required:\s*(\S+)/im);if(!m)return console.error("no PAYMENT-REQUIRED header");console.log(JSON.stringify(JSON.parse(Buffer.from(m[1],"base64").toString()),null,2))})'
+}
