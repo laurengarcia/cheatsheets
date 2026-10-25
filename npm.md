@@ -1,21 +1,22 @@
+# NPM
 
-UPDATE NPM
+## UPDATE NPM
 $ sudo npm install -g npm
 
-MANAGE NODE VERSIONS WITH `nvm` from cli - https://www.npmjs.com/package/nvm
-# nvm -v
-# nvm ls
-# nvm use v20.0.0
+## MANAGE NODE VERSIONS WITH `nvm` from cli - https://www.npmjs.com/package/nvm
+$ nvm -v
+$ nvm ls
+$ nvm use v20.0.0
 
 ... or in a project root, add an .nvmrc file 
 with one line specifying version, ex: 16.0.0
 then call it via cli:
 $ nvm use
 
-INIT
+## INIT
 $ npm init  // generate package.json file for a project
 
-AUTH/ ACCESS TOKENS
+## AUTH/ ACCESS TOKENS
 log into npmjs.com, visit https://www.npmjs.com/settings/laurengarcia/tokens/
 generate new token
 paste into ~/.npmrc or reference via env var from shell by exporting NPM_TOKEN var
@@ -23,37 +24,39 @@ these should now work:
 $ npm login
 $ npm whoami
 
-PACKAGE MANAGEMENT WORKFLOW
+## PACKAGE MANAGEMENT WORKFLOW
 $ npm login
 ... bump package version in package.json using semver
 $ npm i  // updates package-lock.json
 $ npm publish ./  // publish bumped version of package to npm repo
 $ npm version prerelease --preid=beta-foobar && npm publish
 
-PACK & TEST AS TARBALL IN LOCAL DIR
+## PACK & TEST AS TARBALL IN LOCAL DIR
 $ npm pack // aka `yarn pack`; tarfile can be ref'd in another local repo's deps, ex: `"foo": "file:../foo/foo-v1.0.0.tgz"`
 
-CHECK GLOBAL DEPENDENCIES LOCATION
-$ NPM  // .bashrc shortcut; usually /usr/local/lib/node_modules/
+## CHECK GLOBAL DEPENDENCIES LOCATION
+$ NPM  // my .bashrc alias; usually /usr/local/lib/node_modules/
+$ npm root -g // the long way
 
-INSTALL GLOBAL DEPENDENCIES
-$ npm i <package_name> -g   // global install of <pkg name>
+## INSTALL GLOBAL DEPENDENCIES
+$ npm i <package_name> -g  // global install of <pkg name>
 
-UPDATE GLOBAL DEPENDENCIES
+## UPDATE GLOBAL DEPENDENCIES
 $ npm update <package_name> -g
 
-INSTALL PROJECT DEPENDENCIES, write to package.json
+## INSTALL PROJECT DEPENDENCIES, write to package.json
 $ npm i --save <package_name>  // aka: npm install dep, add to package.json
 
-AUDIT PROJECT DEPENDENCIES
+## AUDIT PROJECT DEPENDENCIES
 from project root dir:
+$ npm audit
 $ ncu  // list which deps can be updated; installed via npm-check-updates -g
 
-UNINSTALL GLOBAL DEPENDENCIES
+## UNINSTALL GLOBAL DEPENDENCIES
 $ npm uninstall -g <package_name>
 $ npm uninstall -g <@scope/package_name>
 
-UNINSTALL PROJECT DEPENDENCIES
+## UNINSTALL PROJECT DEPENDENCIES
 $ npm uninstall <package_name>
 $ npm uninstall --save <package_name>  // remove from package.json
 $ npm uninstall <@scope/package_name>  // for scoped packages
