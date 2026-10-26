@@ -2,7 +2,7 @@
 
 ## Conventions
 
-`HTTPS_PROXY` and `NO_PROXY` are env vars, can be set in a number of places
+`HTTPS_PROXY` and `NO_PROXY` are env vars, can be set in a number of places. `HTTPS_PROXY` makes it so DNS resolution happens at the proxy, nowhere else; proxy does the lookup with its own DNS.
 
 Where they get set, from narrowest to broadest:
 
@@ -17,6 +17,18 @@ Tool-specific config can override or ignore them:
 - git has its own `http.proxy` setting.
 - curl reads lowercase `http_proxy` but deliberately ignores uppercase `HTTP_PROXY`, for a security reason. Uppercase and lowercase both work for `HTTPS_PROXY`.
 - Core Node historically ignored these variables entirely, unless the app used a proxy-aware library. Newer versions have opt-in support. So a Node-based CLI may or may not honor them, depending on how it was built.
+
+Gotcha: macOS and Windows also have system proxy settings in the network preferences, sometimes via a PAC file (an auto-config script). Browsers use those; most terminal tools don’t. That’s why “the browser works but the terminal doesn’t” is so common.
+
+To check:
+```
+env | grep -i proxy          # what's in the environment, any case
+npm config list              # npm's merged view, showing which .npmrc each setting came from
+git config --get http.proxy
+scutil --proxy               # macOS system proxy settings
+```
+
+Rule of thumb: When two tools on the same machine behave differently, diff their configs before suspecting the network.
 
 ## Troubleshooting
 
