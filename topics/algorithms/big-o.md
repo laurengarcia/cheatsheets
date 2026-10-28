@@ -1,7 +1,7 @@
-Big O (aka Order Notation)
+# Big O (aka Order Notation)
 Partly based on: https://web.mit.edu/16.070/www/lecture/big_o.pdf
---
 
+--
 Uses letter "O" bc rate of growth of a function is called its "Order".
 A list of classes of functions that are commonly encountered when analyzing
 algorithms in terms of time complexity (# of operations, fewest -> most).
@@ -22,8 +22,8 @@ n = natural number n as argument; input size
 c = some arbitrary constant
 
 
-Big O Notation
---
+## Big O Notation
+
 We express complexity using Big-O notation.
 For a problem of size N:
 
@@ -36,8 +36,7 @@ Note that the big-O expressions do not have constants or low-order terms. This i
 So when evaluating complexity, the higher order term prevails. Big-O names a growth class, the shape of the curve, not a runtime prediction. Smaller terms always lose to higher terms as N scales up, so we drop the smaller term if there's more than one bc the smaller becomes negligible at scale. Big-O tells you how it scales, and profiling tells you how fast it is.
 
 
-Efficiency & Complexity
---
+## Efficiency & Complexity
 
 How efficient is an algorithm or piece of code?
 Efficiency covers lots of resources, including:
@@ -56,11 +55,11 @@ All are important but we will mostly talk about time complexity (CPU usage).
 
 Complexity affects performance but not the other way around.
 
-
 The time required by a function/ procedure is proportional to the number of "basic operations" that it performs. Here are some examples of basic operations:
-  • one arithmetic operation (e.g., +, *).
-  • one assignment (e.g. x := 0)
-  • one test (e.g., x = 0)
+
+  • one arithmetic operation (ex: +).
+  • one assignment (ex: x := 0)
+  • one test (ex: x = 0)
   • one read (of a primitive type: integer, float, character, boolean)
   • one write (of a primitive type: integer, float, character, boolean)
 
@@ -75,54 +74,56 @@ When we are trying to find the complexity of the function/ procedure/ algorithm/
 Typically, we are usually interested in the worst case: what is the maximum number of operations that might be performed for a given problem size. For example, inserting an element into an array, we have to move the current element and all of the elements that come after it one place to the right in the array. In the worst case, inserting at the beginning of the array, all of the elements in the array must be moved. Therefore, in the worst case, the time for insertion is proportional to the number of elements in the array, and we say that the worst-case time for the insertion operation is linear in the number of elements in the array. For a linear-time algorithm, if the problem size doubles, the number of operations also doubles.
 
 
-Determining Complexities
---
+## Determining Complexities
 
 In general, how can you determine the running time of a piece of code? The answer is that it depends on what kinds of statements are used.
 
-
 1/ Sequence of statements:
+```
 statement 1;
 statement 2;
 ...
 statement k;
-
+```
 The total time is found by *adding* the times for all statements:
 
-total time = time(statement 1) + time(statement 2) + ... + time(statement k)
+`total time = time(statement 1) + time(statement 2) + ... + time(statement k)`
 
 If each statement is "simple" (only involves basic operations) then the time for each statement is constant and the total time is also constant: O(1). If they have different complexities, you add them and keep the largest term.
 
 
 2/ If-Then-Else:
+```
 if (cond) then
 block 1 (sequence of statements)
 else
 block 2 (sequence of statements)
 end if;
-
+```
 Here, either block 1 will execute, or block 2 will execute. Therefore, the worst-case time is the slower of the two possibilities:
 
-max(time(block 1), time(block 2))
+`max(time(block 1), time(block 2))`
 
 If block 1 takes O(1) and block 2 takes O(N), the if-then-else statement would be O(N).
 
 
 3/ Loops
+```
 for I in 1 .. N loop
   sequence of statements
 end loop;
-
+```
 The loop executes N times, so the sequence of statements also executes N times. If we assume the statements are O(1), the total time for the for loop is N * O(1), which is O(N) overall.
 
 
 4/ Nested loops
+```
 for I in 1 .. N loop
   for J in 1 .. M loop
     sequence of statements
   end loop;
 end loop;
-
+```
 The outer loop executes N times. Every time the outer loop executes, the inner loop executes M times. As a result, the statements in the inner loop execute a total of N * M times. Thus, the complexity is O(N * M).
 
 In a common special case where the stopping condition of the inner loop is J < M instead of J > M (i.e., the inner loop also executes N times), the total complexity for the two loops is O(N^2).
@@ -136,15 +137,17 @@ f(k) has O(1)
 g(k) has O(k)
 
 When a loop is involved, the same rule applies. For example:
-
+```
 for J in 1 .. N loop
   g(J);
 end loop;
+```
+...has complexity (N^2). The loop executes N times and each function/ procedure call g(N) is complexity O(N) --> O(N^2).
 
-...has complexity (N^2). The loop executes N times and each function/ procedure call g(N) is complexity O(N) --> N^2.
 
+6/ Graph Algorithms
 
-6/ The O(V + E): Describes linear time complexity in graph algorithms, where the runtime scales proportionally to the total number of vertices (V) and edges (E) in a graph. Because a graph's size depends on two distinct independent variables: how many nodes it has (V) and how many lines connect those nodes (E), you cannot simplify it to a single variable like O(N).
+O(V + E): Describes linear time complexity in graph algorithms, where the runtime scales proportionally to the total number of vertices (V) and edges (E) in a graph. Because a graph's size depends on two distinct independent variables: how many nodes it has (V) and how many lines connect those nodes (E), you cannot simplify it to a single variable like O(N).
 
 Here's an npm-style dependency tree:
 
@@ -152,18 +155,19 @@ app ──► express ──► debug ──► ms
  │         │
  └──►   lodash ◄─┘
 
-
-function dfs(pkg, deps, visited) { // Counts the dependencies in a depth-first search:
+```js
+function dfs(pkg, deps, visited) { // Counts dependencies in a depth-first search:
   if (visited.has(pkg)) return;    // Seen it, so stop
   visited.add(pkg);
   for (const dep of deps[pkg]) {   // Follow each of its arrows
     dfs(dep, deps, visited);
   }
 }
+```
 
 Now count the work. There are two kinds:
 
-Visiting packages. Thanks to `visited`, each package is fully processed once. There are 5 packages here, so that’s 5 visits.
+**Visiting packages.** Thanks to `visited`, each package is fully processed once. There are 5 packages here, so that’s 5 visits.
 Following arrows. Each package loops over its own dependency list once, so each arrow gets looked at once. There are 5 arrows here: app→express, app→lodash, express→debug, express→lodash, debug→ms. The second arrow into lodash just hits the visited check and returns immediately.
 
 Total work = packages + arrows = O(V + E), where V is vertices (packages) and E is edges (dependency arrows): two sizes, two letters.
@@ -172,18 +176,14 @@ When an algorithm has a runtime of O(V + E), it means the algorithm explores or 
 
 This complexity is most famously tied to graph traversal algorithms running on an adjacency list representation:
 
-• Breadth-First Search (BFS): Explores the graph layer by layer. It visits every node once and checks every edge to discover neighbors.
-• Depth-First Search (DFS): Dives deep down a path before backtracking. Like BFS, it processes every node and edge.
-• Topological Sort: Arranges directed acyclic graph (DAG) nodes in a linear ordering (often built right on top of a modified DFS).
-• Kahn's Algorithm: Another approach to topological sorting that uses in-degrees of vertices.
+• **Breadth-First Search (BFS):** Explores the graph layer by layer. It visits every node once and checks every edge to discover neighbors.
+• **Depth-First Search (DFS):** Dives deep down a path before backtracking. Like BFS, it processes every node and edge.
+• **Topological Sort:** Arranges directed acyclic graph (DAG) nodes in a linear ordering (often built right on top of a modified DFS).
+• **Kahn's Algorithm:** Another approach to topological sorting that uses in-degrees of vertices.
 
+**Why write V + E instead of just V or E?** In graph theory, the relationship between V and E varies drastically depending on how interconnected the graph is:
 
-Why write V + E instead of just V or E? In graph theory, the relationship between V and E varies drastically depending on how interconnected the graph is:
+• **Sparse Graphs:** Very few connections (arrow), E is roughly equal to V, making the runtime feel closer to O(V).
+• **Dense Graphs:** Every node connects to almost every other node, E can grow up to V². In this worst-case scenario, O(V + E) effectively shifts to quadratic time, or O(V²).
 
-• Sparse Graphs: Very few connections (arrow), E is roughly equal to V, making the runtime feel closer to O(V).
-• Dense Graphs: Every node connects to almost every other node, E can grow up to V². In this worst-case scenario, O(V + E) effectively shifts to quadratic time, or O(V²).
-
-Now remove `visited` from our dfs() fn above. If we count it out: in the first loop, app -> express -> debug -> ms -> app (again), and with no visited check we loop endlessly -> `RangeError: Maximum call stack size exceeded`. The complexity is unbounded, it isn't O(anything), bc it never terminates. It crashes instead and you get no answer at all.
-
-
-
+Now remove `visited` from our dfs() fn above. If we count it out: in the first loop, app -> express -> debug -> ms -> app (again), and with no visited check we loop endlessly and get `RangeError: Maximum call stack size exceeded`. The complexity is unbounded, it isn't O(anything), bc it never terminates. It crashes instead and you get no answer at all.
