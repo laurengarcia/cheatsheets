@@ -9,7 +9,7 @@ algorithms in terms of time complexity (# of operations, fewest -> most).
 notation       name                   example
 --             --                     --
 O(1)           constant time          one hop. ex: hash map lookups
-O(log n)       logarithmic time       each step throws away half the problem. ex: `git bisect`
+O(log n)       logarithmic time       each step throws away half the problem. ex: binary search, `git bisect`
 O((log(n)^c))  polylogarithmic time
 O(n)           linear time            growth proportionate to input size. ex: reading every line of a log file
 O(n log n)     log-linear time        must do all n items (linear), but set divides in half repeatedly. ex: comparison-based sorting.
@@ -147,7 +147,7 @@ end loop;
 
 6/ Graph Algorithms
 
-O(V + E): Describes linear time complexity in graph algorithms, where the runtime scales proportionally to the total number of vertices (V) and edges (E) in a graph. Because a graph's size depends on two distinct independent variables: how many nodes it has (V) and how many lines connect those nodes (E), you cannot simplify it to a single variable like O(N).
+O(V + E): Describes linear time complexity in graph algorithms, where the runtime scales proportionally to the total number of vertices (V) and edges (E) in a graph. Because a graph's size depends on two distinct independent variables: how many nodes it has (V for vertex) and how many lines (arrows) connect those nodes (E for edge), you cannot simplify it to a single variable like O(N).
 
 Here's an npm-style dependency tree:
 
