@@ -1,5 +1,71 @@
 # Node.js Threads
 
+```
+◆ = DRAIN, after every single callback, in every phase:
+      (1) process.nextTick queue ... all of it
+      (2) promise microtasks ....... all of it
+      repeat (1)(2) until both are empty
+
+                  $ node main.js
+                         │
+                         ▼
+   ┌────────────────────────────────────────────┐
+   │ MAIN SCRIPT  (the first order)             │
+   │ whole file + every require(), run as ONE   │
+   │ synchronous order. No callback can run     │
+   │ until the last line finishes.              │
+   └─────────────────────┬──────────────────────┘
+                         │  ◆
+                         ▼
+   ┌────────────────────────────────────────────┐
+┌─▶│ 1. TIMERS                                  │
+│  │ setTimeout / setInterval callbacks that    │
+│  │ are already DUE (kept in a min-heap,       │
+│  │ ordered by expiry time)                    │
+│  └─────────────────────┬──────────────────────┘
+│                        │  ◆
+│                        ▼
+│  ┌────────────────────────────────────────────┐
+│  │ 2. PENDING CALLBACKS                       │
+│  │ some deferred system callbacks (rare)      │
+│  └─────────────────────┬──────────────────────┘
+│                        │  ◆
+│                        ▼
+│  ┌────────────────────────────────────────────┐
+│  │ 3. IDLE / PREPARE                          │
+│  │ internal to libuv, no user code            │
+│  └─────────────────────┬──────────────────────┘
+│                        │  ◆
+│                        ▼
+│  ┌────────────────────────────────────────────┐
+│  │ 4. POLL                                    │  ◀── finished I/O from libuv:
+│  │ I/O callbacks: fs, net, http               │      · OS kernel: sockets, TCP,
+│  │ if nothing else is queued, WAITS here      │        HTTP (no extra threads)
+│  │ for I/O (until the next timer is due)      │      · thread pool, 4 threads:
+│  └─────────────────────┬──────────────────────┘        fs, dns.lookup, crypto, zlib
+│                        │  ◆
+│                        ▼
+│  ┌────────────────────────────────────────────┐
+│  │ 5. CHECK                                   │
+│  │ setImmediate callbacks                     │
+│  │ (always right after poll)                  │
+│  └─────────────────────┬──────────────────────┘
+│                        │  ◆
+│                        ▼
+│  ┌────────────────────────────────────────────┐
+│  │ 6. CLOSE CALLBACKS                         │
+│  │ 'close' events, e.g. socket.on('close')    │
+│  └─────────────────────┬──────────────────────┘
+│                        │  ◆
+│                        ▼
+│             anything left to do?
+│          (timers, open handles, immediates)
+│                        │
+│            yes ┌───────┴───────┐ no
+└────────────────┘               ▼
+                               EXIT
+```
+
 ## Single Thread = One Barista
 
 Picture a coffee counter with one barista. That’s your JavaScript thread.
