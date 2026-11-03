@@ -6,6 +6,7 @@ $ sudo rm -rf /Library/LaunchDaemons/suspicious.plist  # remove a launch daemon
 Check /Applications, /usr/local/bin/, and /var/root/ for suspicious files.
 Restart your Mac in Safe Mode and re-check for persistence.
 Consider a full macOS reinstall if the infection persists.
+Linux commands also mixed in below.
 -------------------------------------------------------------------------------
 
 Basic checks:
@@ -25,15 +26,23 @@ Monitor network traffic:
   - $ nettop -p <pid>
   - $ sudo nettop -m tcp
 
-Monitor processes:
+Monitor all processes:
+  - $ htop
+  - $ ps -eo pid,ppid,user,etime,%cpu,%mem,cmd --sort=-%cpu  # linux: who, how long, how hungry
+  - $ sudo ss -tulpn                                         # linux: every listening socket + owning process
+  - $ systemctl list-units --type=service --state=running    # linux: what systemd is running
+  - $ systemctl list-timers --all                            # linux: scheduled jobs
+  - $ crontab -l; sudo crontab -l; ls /etc/cron.*            # cron jobs
+
+Monitor specific processes:
   - $ ps aux <pid>
   - $ lsof -p <pid> | grep <process name>  # last column = full path to binary
   - $ ps aux | grep com.apple.  # Anything running fr /tmp, /Users, or unknown path, is suspicious
 
 Monitor chatty processes:
-  - $ sudo launchctl list | grep xpc  # check xpc peers, all should be signed com.apple.* services
-  - $ sudo lsof -i -P | grep rapportd  # check for suspicious network connections thru rapportd
-  - $ sudo nettop -m tcp -p rapportd  # check rapportd is not transmitting data in or out
+  - $ sudo launchctl list | grep xpc    # check xpc peers, all should be signed com.apple.* services
+  - $ sudo lsof -i -P | grep rapportd   # check for suspicious network connections thru rapportd
+  - $ sudo nettop -m tcp -p rapportd    # check rapportd is not transmitting data in or out
 
 Monitor sudo commands run:
   - log show --predicate 'process == "sudo"' --info --last 1d
