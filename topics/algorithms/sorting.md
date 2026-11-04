@@ -1,6 +1,7 @@
 # Sorting
 To analyze time efficiency we would create formulas to express # of comparisons, # of copies, and # of swaps.
 
+
 ## Simple Sort Algorithm - O(n^2):
 
 1 Get a list of unsorted numbers
@@ -85,3 +86,26 @@ parents: 0–9
 leaves: 10–19
 last parent: 9 (value 36)
 ```
+
+
+## Merge Sort - O(n log n):
+
+1 Get a list of unsorted numbers
+2 Treat each number as a sorted run of length one
+3 Repeat steps 4 through 6 until one run remains
+  4 Pair up neighboring runs from left to right; a leftover odd run waits for the next round
+  5 Merge each pair: compare the front numbers of the two runs, copy the smaller one
+    to a new list, and repeat until both runs are empty
+  6 Replace each pair of old runs with its merged run
+7 Stop
+
+```
+round 0:  [42] [17] [88] [ 5] [63] [29] [71] [94]
+            \   /     \   /     \   /     \   /
+round 1:   [17 42]   [ 5 88]   [29 63]   [71 94]
+                \     /             \     /
+round 2:     [ 5 17 42 88]       [29 63 71 94]
+                        \         /
+round 3:         [ 5 17 29 42 63 71 88 94]
+```
+
