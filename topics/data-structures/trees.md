@@ -27,6 +27,7 @@ More precisely: BST lookup costs O(height).
 
 Sorted input isn’t a corner case. Alphabetical package lists, timestamps, and auto-increment IDs all arrive in order all the time.
 
+
 ### Self-Balancing Trees
 
 - AVL Trees

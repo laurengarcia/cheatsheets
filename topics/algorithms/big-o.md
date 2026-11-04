@@ -12,7 +12,7 @@ O(1)           constant time          one hop. ex: hash map lookups
 O(log n)       logarithmic time       each step throws away half the problem. ex: binary search, `git bisect`
 O((log(n)^c))  polylogarithmic time
 O(n)           linear time            growth proportionate to input size. ex: reading every line of a log file
-O(n log n)     log-linear time        must do all n items (linear), but set divides in half repeatedly. ex: comparison-based sorting.
+O(n log n)     log-linear time        must do all n items (linear), but set divides in half repeatedly. ex: heap sort
 O(n^2)         quadratic time         nested loops over the same list quadruples time complexity
 O(n^c)         polynomial time        very slow for large sets
 O(c^n)         exponential time       slowest and infeasible for large sets
