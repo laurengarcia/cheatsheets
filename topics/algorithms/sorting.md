@@ -1,7 +1,7 @@
+# Sorting
 To analyze time efficiency we would create formulas to express # of comparisons, # of copies, and # of swaps.
-All of these are O(n^2).
 
-Simple Sort Algorithm:
+## Simple Sort Algorithm - O(n^2):
 
 1 Get a list of unsorted numbers
 2 Repeat steps 3 through 6 until the unsorted list is empty
@@ -12,7 +12,7 @@ Simple Sort Algorithm:
 7 Stop
 
 
-Insertion Sort Algorithm:
+## Insertion Sort Algorithm - O(n^2):
 
 1 Get a list of unsorted numbers
 2 Set a marker for the sorted section after the first number in the list
@@ -23,7 +23,7 @@ Insertion Sort Algorithm:
 7 Stop
 
 
-Selection Card Sort:
+## Selection Card Sort - O(n^2):
 
 1 Get a list of unsorted numbers
 2 Set a marker for the unsorted section at the front of the list
@@ -34,7 +34,7 @@ Selection Card Sort:
 7 Stop
 
 
-Bubble Sort Algorithm:
+## Bubble Sort Algorithm - O(n^2):
 
 1 Get a list of unsorted numbers
 2 Set a marker for the unsorted section at the end of the list
@@ -45,7 +45,7 @@ Bubble Sort Algorithm:
 7 Stop
 
 
-Heap Sort Algorithm:
+## Heap Sort Algorithm - O(n log n):
 
 1 Get a list of unsorted numbers
 2 Treat the list as a balanced binary tree, filled row by row from left to right:
@@ -84,5 +84,4 @@ row 4: positions 15–19   (children of positions 7, 8, 9)
 parents: 0–9
 leaves: 10–19
 last parent: 9 (value 36)
-
 ```
