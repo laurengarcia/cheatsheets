@@ -137,8 +137,33 @@ setTimeout(() => console.log('2'), 0);
 Promise.resolve().then(() => console.log('3'));
 console.log('4');
 ```
-Prints: 1, 4, 3, 2.
-Correct: 1, 4, 3, 2. Both sync lines, then the sticky note (3), then the rail (2).
+Prints: 1, 4, 3, 2. Both sync lines, then the sticky note (3), then the rail (2).
+
+```js
+Promise.resolve(1)
+  .then(x => x + 1)    // returns 2 → next link receives 2
+  .then(x => x * 10)   // returns 20 → next link receives 20
+```
+The whole promise chain usually runs within a single drain.
+It also doesn’t queue all the links in the chain at once.
+1. Each link in chain is queued only when the link before it settles.
+2. When the first callback runs and returns 2, its promise fulfills, and that queues the next callback.
+3. Finishes and returns to event loop when all promises in chain are drained.
+
+**The exception:** if a link returns a promise that isn’t settled yet, for example return `fs.promises.readFile(...)`, the chain pauses there. Can pause due to I/O, timer, a network call, etc.
+
+**The rule:** It drains the chain one link at a time, but without leaving the drain, unless a link has to wait on smth, i.e. real I/O.
+
+```js
+Promise.resolve()
+  .then(() => console.log('A1'))
+  .then(() => console.log('A2'));
+
+Promise.resolve()
+  .then(() => console.log('B1'))
+  .then(() => console.log('B2'));
+```
+Prints A1, B1, A2, B2. Because each next link is only queued after the promise before it resolves & returns a value.
 
 
 ### process.nextTick

@@ -109,3 +109,8 @@ round 2:     [ 5 17 42 88]       [29 63 71 94]
 round 3:         [ 5 17 29 42 63 71 88 94]
 ```
 
+Merge Sort, n numbers:
+- copies:       n log₂ n                 (every case)
+- comparisons:  worst  n log₂ n − n + 1
+                best   (n/2) log₂ n      (one run always empties first)
+- swaps:        0                        (it copies, it never swaps)
