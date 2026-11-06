@@ -2,7 +2,7 @@
 
 Efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the list that could contain the item, unil you've narrowed down the possible locations to just one.
 
-ex: Find an item in an array of star names
+Ex: Find an item in an array of star names
 1. Linear search: worst case, would have to examine all `n` star names.
 2. If sorted alphabetically by star names, binary search would only need to examine 22 stars in worst case.
 
@@ -51,12 +51,13 @@ console.log("Found prime at index " + result);
 - **Binary search:** O(log n). Each guess cuts what's left in half.
 
 
-### Worst-case guesses
+### Worst-case number of guesses
 
 - `guesses = (exponent of the largest power of 2 ≤ n) + 1`
   - exponent = how many times you can halve n down to 1
   - +1 = checking that last item
-  - math notation for the same thing: `⌊log₂ n⌋ + 1`
+  - math notation for this exact count of guesses: `⌊log₂ n⌋ + 1`
+  - O(log n) describes the growth: “as n gets bigger, what shape does the work follow?”
 
 | n   | largest power of 2 ≤ n | guesses   |
 |-----|------------------------|-----------|
@@ -74,6 +75,7 @@ log₂ n = how many times you halve n to reach 1.
 ### Why it matters
 
 Doubling n adds only **one** guess.
+When doubling n adds one step that's O(log n).
 
 | n             | linear | binary |
 |---------------|--------|--------|
