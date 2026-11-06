@@ -4,15 +4,15 @@ In JavaScript, both `Map` and POJOs (Plain Old JavaScript Objects) store data in
 
 ## Direct Comparison
 
-| Feature | Map | POJO (Plain Object) |
-|---|---|---|
-| **Key Types** | Any data type (objects, functions, primitives) | Strings or Symbols only |
-| **Key Order** | Strictly preserves insertion order | Complex ordering (integer-like keys first in ascending order, then strings by insertion, then Symbols) |
+| Feature            | Map                                | POJO (Plain Object) |
+|---                 |---                                 |---|
+| **Key Types**      | Any (obj, fns, primitives)         | Strings or Symbols only |
+| **Key Order**      | Strictly preserves insertion order | Complex ordering (integer-like keys first in ascending order, then strings by insertion, then Symbols) |
 | **Size Retrieval** | Direct via `.size` property — O(1) | Requires `Object.keys(obj).length` — O(n) |
-| **Iteration** | Directly iterable with `for...of` | Requires `Object.keys()`, `Object.entries()`, or `for...in` |
-| **JSON Support** | Requires manual conversion | Native support via `JSON.stringify()` |
-| **Safety** | Keys can't collide with or overwrite inherited properties | Can accidentally overwrite inherited keys (`toString`, etc.) |
-| **Performance** | Faster for frequent additions/deletions | Faster for read-heavy, static workloads |
+| **Iteration**      | Directly iterable with `for...of`  | Requires `Object.keys()`, `Object.entries()`, or `for...in` |
+| **JSON Support**   | Requires manual conversion         | Native support via `JSON.stringify()` |
+| **Safety**         | Keys cant collide w or overwrite inherited properties | Can accidentally overwrite inherited keys (`toString`, etc.) |
+| **Performance**    | Faster for frequent adds/deletes | Faster for read-heavy, static workloads |
 
 ## Key Advantages of Map
 
