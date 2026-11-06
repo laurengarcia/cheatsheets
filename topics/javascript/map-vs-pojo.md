@@ -53,12 +53,20 @@ for (const key of Object.keys(o)) { }
 for (const value of Object.values(o)) { }
 for (const [key, value] of Object.entries(o)) { }
 
-for (const key in o) {                     // also walks INHERITED
-  if (Object.hasOwn(o, key)) { }           // enumerable keys; guard it
+for (const key in o) {             // also walks INHERITED
+  if (Object.hasOwn(o, key)) { }   // enumerable keys; guard it; .hasOwn added in ES 2022
+}
+
+for (var key in obj) {
+  if (obj.hasOwnProperty(key)) {   // old-fashioned Crockford style
+    // only the object's own keys, not inherited ones
+  }
 }
 ```
 
 Notes:
+- POJO keys are stringified first; every object beceomes "[object Object]", so more than one will overwrite/ collide.
+- Map is opposite; keys can hold objects/ functions/ whatever, and they collide/ are matched by identity.
 - `Object.keys/values/entries` return own enumerable string keys only; Symbol keys are skipped.
 - `for...in` is the odd one out: it includes inherited enumerable properties, hence the `hasOwn` guard.
 - Converting: `new Map(Object.entries(o))` and `Object.fromEntries(m)`.
