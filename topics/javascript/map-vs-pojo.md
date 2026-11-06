@@ -28,3 +28,37 @@ In JavaScript, both `Map` and POJOs (Plain Old JavaScript Objects) store data in
 
 - **Choose a POJO** when your data has a fixed, static shape (like a database record or configuration object) or when you need to send it over a network as JSON.
 - **Choose a Map** when you need a dynamic dictionary, expect a very large number of keys, need non-string keys, or insert and delete entries often.
+
+### Iteration Syntax
+
+**Map** (directly iterable; always insertion order)
+
+```js
+const m = new Map([['a', 1], ['b', 2]]);
+
+for (const [key, value] of m) { }         // entries, the default
+for (const key of m.keys()) { }
+for (const value of m.values()) { }
+for (const [key, value] of m.entries()) { } // same as plain `of m`
+
+m.forEach((value, key) => { });            // note: value FIRST
+```
+
+**POJO** (not iterable; `for...of obj` throws TypeError)
+
+```js
+const o = { a: 1, b: 2 };
+
+for (const key of Object.keys(o)) { }
+for (const value of Object.values(o)) { }
+for (const [key, value] of Object.entries(o)) { }
+
+for (const key in o) {                     // also walks INHERITED
+  if (Object.hasOwn(o, key)) { }           // enumerable keys; guard it
+}
+```
+
+Notes:
+- `Object.keys/values/entries` return own enumerable string keys only; Symbol keys are skipped.
+- `for...in` is the odd one out: it includes inherited enumerable properties, hence the `hasOwn` guard.
+- Converting: `new Map(Object.entries(o))` and `Object.fromEntries(m)`.
