@@ -1,7 +1,6 @@
 # Big O (aka Order Notation)
 Partly based on: https://web.mit.edu/16.070/www/lecture/big_o.pdf
 
---
 Uses letter "O" bc rate of growth of a function is called its "Order".
 A list of classes of functions that are commonly encountered when analyzing
 algorithms in terms of time complexity (# of operations, fewest -> most).
