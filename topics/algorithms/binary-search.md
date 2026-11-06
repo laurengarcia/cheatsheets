@@ -6,7 +6,7 @@ ex: Find an item in an array of star names
 1. Linear search: worst case, would have to examine all `n` star names.
 2. If sorted alphabetically by star names, binary search would only need to examine 22 stars in worst case.
 
-## Binary search of an array
+## Binary search of an array - O(log n)
 Find a given number in an array of the first 25 prime numbers (notice list is pre-sorted not random).
 
 Pseudocode:
@@ -47,22 +47,39 @@ console.log("Found prime at index " + result);
 
 ## Runtime Calculation
 
-A **linear search** of `primes` is **O(n)**, where `n` is the number of items in the array.
-For a **binary search**, the number of guesses in the worst case is:
-
-> the number of times we can repeatedly halve, starting at `n`, until we reach 1, **plus one**.
-
-**Formula:**
-```
-guesses = ⌊log₂ n⌋ + 1
-```
-...where `log₂ n` means "the base-2 logarithm of `n`.
+- **Linear search:** O(n). In the worst case you check every item.
+- **Binary search:** O(log n). Each guess cuts what's left in half.
 
 
-### What's a logarithm?
+### Worst-case guesses
 
-Logarithms are the **inverse of exponentials**. Exponentials grow very fast, so logarithms grow very slowly.
+- `guesses = (exponent of the largest power of 2 ≤ n) + 1`
+- The exponent = how many times you can halve n down to 1
+- +1 = checking that last item
 
-If `log₂ n = x`, then `n = 2ˣ`. Ex: `log₂ 128 = 7`, because `2⁷ = 128`.
+| n   | largest power of 2 ≤ n | guesses   |
+|-----|------------------------|-----------|
+| 25  | 16 = 2⁴                | 4 + 1 = 5 |
+| 100 | 64 = 2⁶                | 6 + 1 = 7 |
+| 128 | 128 = 2⁷               | 7 + 1 = 8 |
 
-So binary search is **O(log n)**.
+Math notation for the same thing: `⌊log₂ n⌋ + 1`
+
+
+### What's log₂?
+
+log₂ n = how many times you halve n to reach 1.
+`log₂ 128 = 7` because `2⁷ = 128`.
+
+
+### Why it matters
+
+Doubling n adds only **one** guess.
+
+| n             | linear | binary |
+|---------------|--------|--------|
+| 1,000         | 1,000  | 10     |
+| 1,000,000     | 1M     | 20     |
+| 1,000,000,000 | 1B     | 30     |
+
+Shortcut: 2¹⁰ ≈ 1,000, so every ×1,000 adds about 10 guesses.
