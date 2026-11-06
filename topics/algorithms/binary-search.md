@@ -54,16 +54,15 @@ console.log("Found prime at index " + result);
 ### Worst-case guesses
 
 - `guesses = (exponent of the largest power of 2 ≤ n) + 1`
-- The exponent = how many times you can halve n down to 1
-- +1 = checking that last item
+  - exponent = how many times you can halve n down to 1
+  - +1 = checking that last item
+  - math notation for the same thing: `⌊log₂ n⌋ + 1`
 
 | n   | largest power of 2 ≤ n | guesses   |
 |-----|------------------------|-----------|
 | 25  | 16 = 2⁴                | 4 + 1 = 5 |
 | 100 | 64 = 2⁶                | 6 + 1 = 7 |
 | 128 | 128 = 2⁷               | 7 + 1 = 8 |
-
-Math notation for the same thing: `⌊log₂ n⌋ + 1`
 
 
 ### What's log₂?
