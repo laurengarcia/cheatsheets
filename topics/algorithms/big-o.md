@@ -25,10 +25,9 @@ where:
 
 We express complexity using Big-O notation.
 For a problem of size N:
-
- • a constant-time algorithm is "order 1": O(1)
- • a linear-time algorithm is "order N": O(N)
- • a quadratic-time algorithm is "order N squared": O(N^2)
+- a constant-time algorithm is "order 1": O(1)
+- a linear-time algorithm is "order N": O(N)
+- a quadratic-time algorithm is "order N squared": O(N^2)
 
 Note that the big-O expressions do not have constants or low-order terms. This is because, when N gets large enough, constants and low-order terms don't matter (a constant-time algorithm will be faster than a linear-time algorithm, which will be faster than a quadratic-time algorithm).
 
@@ -39,10 +38,10 @@ So when evaluating complexity, the higher order term prevails. Big-O names a gro
 
 How efficient is an algorithm or piece of code?
 Efficiency covers lots of resources, including:
-  • CPU (time) usage
-  • memory usage
-  • disk usage
-  • network usage
+- CPU (time) usage
+- memory usage
+- disk usage
+- network usage
 
 All are important but we will mostly talk about time complexity (CPU usage).
 
@@ -56,11 +55,11 @@ Complexity affects performance but not the other way around.
 
 The time required by a function/ procedure is proportional to the number of "basic operations" that it performs. Here are some examples of basic operations:
 
-  • one arithmetic operation (ex: +).
-  • one assignment (ex: x := 0)
-  • one test (ex: x = 0)
-  • one read (of a primitive type: integer, float, character, boolean)
-  • one write (of a primitive type: integer, float, character, boolean)
+- one arithmetic operation (ex: +).
+- one assignment (ex: x := 0)
+- one test (ex: x = 0)
+- one read (of a primitive type: integer, float, character, boolean)
+- one write (of a primitive type: integer, float, character, boolean)
 
 Some functions/ procedures perform the same number of operations every time they are called. For example, StackSize in the Stack implementation always returns the number of elements currently in the stack or states that the stack is empty, then we say that StackSize takes constant time.
 
