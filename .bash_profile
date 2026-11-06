@@ -64,7 +64,7 @@ alias check-sign='function _checksign() {
   codesign --verify --verbose=4 "$1" && echo -e "\033[1;34m[INFO]\033[0m ---- Verification check complete. ----" || echo -e "\033[1;31m[FAILED]\033[0m Signature verification failed!"
 }; _checksign'
 
-# curl x402 endpoints and convert from base64
+# curl x402 endpoints and convert headers from base64
 # usage: x402h "http://localhost:4021/api/v1/x402/proxy/extract/url-content?url=https://example.com"
 x402h() {
   curl -s -D - -o /dev/null "$@" \

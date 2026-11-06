@@ -6,16 +6,16 @@ Uses letter "O" bc rate of growth of a function is called its "Order".
 A list of classes of functions that are commonly encountered when analyzing
 algorithms in terms of time complexity (# of operations, fewest -> most).
 
-notation       name                   example
---             --                     --
-O(1)           constant time          one hop. ex: hash map lookups
-O(log n)       logarithmic time       each step throws away half the problem. ex: binary search, `git bisect`
-O((log(n)^c))  polylogarithmic time
-O(n)           linear time            growth proportionate to input size. ex: reading every line of a log file
-O(n log n)     log-linear time        must do all n items (linear), but set divides in half repeatedly. ex: heap sort
-O(n^2)         quadratic time         nested loops over the same list quadruples time complexity
-O(n^c)         polynomial time        very slow for large sets
-O(c^n)         exponential time       slowest and infeasible for large sets
+| notation      | name                  | example |
+|---            |---                    |---|
+| O(1)          | constant time         | one hop. ex: hash map lookups |
+| O(log n)      | logarithmic time      | each step throws away half the problem. ex: binary search, `git bisect` |
+| O((log(n)^c)) | polylogarithmic time  | grows as a polynomial of log of n, ex: p2p DHT, 2D range tree |
+| O(n)          | linear time           | growth proportionate to input size. ex: reading every line of a log file |
+| O(n log n)    | log-linear time       | must do all n items (linear), but set divides in half repeatedly. ex: heap sort |
+| O(n^2)        | quadratic time        | nested loops over the same list quadruples time complexity |
+| O(n^c)        | polynomial time       | very slow for large sets |
+| O(c^n)        | exponential time      | slowest and infeasible for large sets |
 
 where:
 n = natural number n as argument; input size
@@ -49,9 +49,9 @@ All are important but we will mostly talk about time complexity (CPU usage).
 
 ** Be careful to differentiate between:
 
-1. Performance: how much time/memory/disk/... is actually used when a program is run. This depends on the machine, compiler, etc. as well as the code.
+1. **Performance:** how much time/memory/disk/... is actually used when a program is run. This depends on the machine, compiler, etc. as well as the code.
 
-2. Complexity: how do the resource requirements of a program or algorithm scale, i.e., what happens as the size of the problem being solved gets larger?
+2. **Complexity:** how do the resource requirements of a program or algorithm scale, i.e., what happens as the size of the problem being solved gets larger?
 
 Complexity affects performance but not the other way around.
 
