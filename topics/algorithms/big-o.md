@@ -17,8 +17,8 @@ algorithms in terms of time complexity (# of operations, fewest -> most).
 | O(c^n)        | exponential time      | slowest and infeasible for large sets |
 
 where:
-n = natural number n as argument; input size
-c = some arbitrary constant
+- n = natural number n as argument; input size
+- c = some arbitrary constant
 
 
 ## Big O Notation
