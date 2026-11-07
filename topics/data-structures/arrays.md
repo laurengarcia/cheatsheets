@@ -1,13 +1,13 @@
 # Arrays
 
-| Operation                       | JS                       | Cost            | Why  |
-|---                              |---                       |---              |---
-| Read or write by index          | arr[i]                   | O(1)            | Direct jump |
-| Add or remove at the end        | push, pop                | O(1) amortized  | Nobody else moves |
+| Operation                       | JS                       | Cost            | Why                        |
+|---                              |---                       |---              |---                         |
+| Read or write by index          | arr[i]                   | O(1)            | Direct jump                |
+| Add or remove at the end        | push, pop                | O(1) amortized  | Nobody else moves          |
 | Add or remove at the front      | unshift, shift           | O(n)            | Every item shifts over one |
 | Insert or remove in the middle  | splice                   | O(n)            | Everything after it shifts |
-| Search by value                 | includes, indexOf, find  | O(n)            | One by one |
-| Copy                            | slice, [...arr]          | O(n)            | Every item gets copied |
+| Search by value                 | includes, indexOf, find  | O(n)            | One by one                 |
+| Copy                            | slice, [...arr]          | O(n)            | Every item gets copied     |
 
 **The rule underneath it all:** changes at the end are cheap, and changes anywhere else make everyone behind them move.
 
