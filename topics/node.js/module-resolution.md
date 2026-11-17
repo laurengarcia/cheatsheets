@@ -33,7 +33,27 @@ app/
 Both versions run side by side in the same process.
 
 
-## Next layer: inside the package folder:
+## Hoisting & phantom dependencies
+
+npm v3+ (2015) flattens: non-conflicting deps get HOISTED to the top-level node_modules (unrelated to JS variable hoisting).
+Phantom dependency: your code requires a package you never declared, and it only works because some other dep's copy was hoisted.
+
+- Breaks when that other dep drops it -> `Error: Cannot find module 'debug'` (code MODULE_NOT_FOUND; the "Require stack" shows which of YOUR files)
+- Shows up when the updated package-lock.json is committed: fresh installs (npm ci) break; devs with a stale node_modules say "works on my machine"
+- Fix: add it to your own package.json
+- Prevent: lint rule n/no-extraneous-require; pnpm doesn't flatten, so phantoms fail immediately
+
+
+### ERR_PACKAGE_PATH_NOT_EXPORTED
+
+`require('some-pkg/lib/internal/helper.js')` worked for years, then breaks after an upgrade: the package added "exports" and didn't list that path. Throws `Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: Package subpath './lib/internal/helper.js' is not defined by "exports"`
+
+- The file is on disk; exports refuses it (not "Cannot find module")
+- Adding exports is effectively a breaking change; if shipped as a minor, a ^ range picks it up automatically
+- Fix: use the public API -> pin the old version + open an issue -> patch-package as a last resort
+
+
+## Inside the package folder:
 Once Node finds node_modules/lodash/, it still has to pick which file to load. It checks the package’s package.json:
 
 - "main", the old way: one entry file, e.g. "main": "lib/index.js". Any other file is still reachable directly with require('pkg/lib/internal/helper.js').
@@ -48,13 +68,3 @@ Once Node finds node_modules/lodash/, it still has to pick which file to load. I
 ```
 - if a package has neither "main" nor "exports", Node falls back to index.js.
 
-
-## Hoisting & phantom dependencies
-
-npm v3+ (2015) flattens: non-conflicting deps get HOISTED to the top-level node_modules (unrelated to JS variable hoisting).
-Phantom dependency: your code requires a package you never declared, and it only works because some other dep's copy was hoisted.
-
-- Breaks when that other dep drops it -> `Error: Cannot find module 'debug'` (code MODULE_NOT_FOUND; the "Require stack" shows which of YOUR files)
-- Shows up when the updated package-lock.json is committed: fresh installs (npm ci) break; devs with a stale node_modules say "works on my machine"
-- Fix: add it to your own package.json
-- Prevent: lint rule n/no-extraneous-require; pnpm doesn't flatten, so phantoms fail immediately
